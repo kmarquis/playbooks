@@ -1,0 +1,5 @@
+---
+- name: Building BGP template 
+  template:
+      src: main.j2
+      dest: "{{ build_dir }}/{{ inventory_hostname }}.conf"

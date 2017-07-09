@@ -1,0 +1,13 @@
+---
+devices:
+  as1234:
+    group:
+      "v4_peers":
+        peer: 192.168.10.10
+        description: AS-SET-PEER
+        md5: password7
+        peer_as: 1234
+      "v6_peers":
+        peer: 2001:192:168:0::1
+        description: AS-SET-PEER
+        peer_as: 1234

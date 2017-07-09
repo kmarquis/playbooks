@@ -1,0 +1,6 @@
+[all:vars]
+
+[junos]
+# This is where you will enter the BGP peer AS Number
+# as the inventory hostname
+as1234
