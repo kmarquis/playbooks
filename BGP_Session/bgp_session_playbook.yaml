@@ -13,7 +13,7 @@
         register: "build_dir"
     - set_fact: 
         build_dir: "{{playbook_dir}}/{{ build_dir }}/{{ inventory_hostname }}"
-        device_conf: "{{ build_dir }}/{{ inventory_hostname }}/conf_{{ inventory_hostname }}.conf"
+        device_conf: "{{ build_dir }}/conf_{{ inventory_hostname }}.conf"
     - name: create host build directory
       file: path={{ build_dir }} state=directory recurse=yes mode=0755
 
