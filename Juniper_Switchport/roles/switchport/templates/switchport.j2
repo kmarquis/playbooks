@@ -1,0 +1,9 @@
+{% for interface in devices[inventory_hostname].interface %}
+delete interface {{ interface }}
+set interfaces {{ interface }} description "{{ devices[inventory_hostname].interface[interface].description }}"
+set interfaces {{ interface }} enable
+set interfaces {{ interface }} unit 0 family ethernet-switching interface-mode {{ devices[inventory_hostname].interface[interface].port_mode }}
+{% for vlans in devices[inventory_hostname].interface[interface].vlans %}
+set interfaces {{ interface }} unit 0 family ethernet-switching vlan members {{ vlans }}
+{% endfor %}
+{% endfor %}

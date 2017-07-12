@@ -1,0 +1,4 @@
+[all:vars]
+
+[junos]
+switch1
