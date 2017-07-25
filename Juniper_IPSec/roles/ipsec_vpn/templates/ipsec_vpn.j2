@@ -1,0 +1,27 @@
+{% for ike_ipsec in devices[inventory_hostname].ike_ipsec %}
+set security ike proposal {{ ike_ipsec }} authentication-method pre-shared-keys
+set security ike proposal {{ ike_ipsec }} dh-group group20
+set security ike proposal {{ ike_ipsec }} authentication-algorithm sha-384
+set security ike proposal {{ ike_ipsec }} encryption-algorithm aes-256-cbc
+
+set security ike policy {{ ike_ipsec }} mode main
+set security ike policy {{ ike_ipsec }} proposals {{ ike_ipsec }}
+set security ike policy {{ ike_ipsec }} pre-shared-key ascii-text {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].password }}
+
+set security ike gateway {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ike_gateway_name }} ike-policy {{ ike_ipsec }}
+set security ike gateway {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ike_gateway_name }} address {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].peer_address }}
+set security ike gateway {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ike_gateway_name }} external-interface {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ext_int }}
+{% if devices[inventory_hostname].ike_ipsec[ike_ipsec].version is defined %}
+set security ike gateway {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ike_gateway_name }} version {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].version }}
+{% endif %}
+set security ipsec proposal {{ ike_ipsec }} protocol esp
+set security ipsec proposal {{ ike_ipsec }} authentication-algorithm hmac-sha-256-128
+set security ipsec proposal {{ ike_ipsec }} encryption-algorithm aes-256-cbc
+
+set security ipsec policy {{ ike_ipsec }} proposals {{ ike_ipsec }}
+
+set security ipsec vpn {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ipsec_vpn_name }} bind-interface {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].tunnel_int }}
+set security ipsec vpn {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ipsec_vpn_name }} ike gateway {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ike_gateway_name }}
+set security ipsec vpn {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ipsec_vpn_name }} ike ipsec-policy {{ ike_ipsec }}
+set security ipsec vpn {{ devices[inventory_hostname].ike_ipsec[ike_ipsec].ipsec_vpn_name }} establish-tunnels immediately
+{% endfor %}

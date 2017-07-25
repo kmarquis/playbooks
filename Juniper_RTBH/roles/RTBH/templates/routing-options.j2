@@ -1,0 +1,3 @@
+{% for blocked_ip in devices[inventory_hostname].blocked_ip %}
+set routing-options static route {{ blocked_ip }}/32 discard tag 6666 
+{% endfor %}

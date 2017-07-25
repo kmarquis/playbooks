@@ -5,6 +5,6 @@ set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].grou
 set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} peer-as {{ devices[inventory_hostname].group[group].peer_as }}
 {% else %}
 set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} description "{{ devices[inventory_hostname].group[group].description }}"
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} peer-as {{ devices[inventory_hostname].group[group].peer_as  }}
-{% endif %}
+set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} peer-as {{ devices[inventory_hostname].group[group].peer_as }}
+{% endif %} 
 {% endfor %}
