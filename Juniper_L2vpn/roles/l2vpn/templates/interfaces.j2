@@ -1,0 +1,6 @@
+{% for interface, int in devices[inventory_hostname].interface.items() %}
+set interfaces {{ interface }} description "{{ int.description }}"
+set interfaces {{ interface }} encapsulation ethernet-ccc
+set interfaces {{ interface }} unit 0 description "{{ int.log_description }}"
+set interfaces {{ interface }} unit 0 family ccc 
+{% endfor %}
