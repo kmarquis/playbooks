@@ -1,10 +1,12 @@
-{% for group in devices[inventory_hostname].group %}
-{% if devices[inventory_hostname].group[group].md5 is defined %}
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} description "{{ devices[inventory_hostname].group[group].description }}"
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} authentication-key {{ devices[inventory_hostname].group[group].md5 }}
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} peer-as {{ devices[inventory_hostname].group[group].peer_as }}
+{% for group, bgp_group in devices[inventory_hostname].group.items() %}
+{% for peer, peer_val in bgp_group.peer.items() %}
+{% if peer_val.md5 is defined %}
+set protocols bgp group {{ group }} neighbor {{ peer }} description "{{ peer_val.description }}"
+set protocols bgp group {{ group }} neighbor {{ peer }} authentication-key {{ peer_val.md5 }}
+set protocols bgp group {{ group }} neighbor {{ peer }} peer-as {{ peer_val.peer_as }}
 {% else %}
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} description "{{ devices[inventory_hostname].group[group].description }}"
-set protocols bgp group {{ group }} neighbor {{ devices[inventory_hostname].group[group].peer }} peer-as {{ devices[inventory_hostname].group[group].peer_as }}
+set protocols bgp group {{ group }} neighbor {{ peer }} description "{{ peer_val.description }}"
+set protocols bgp group {{ group }} neighbor {{ peer }} peer-as {{ peer_val.peer_as }}
 {% endif %} 
+{% endfor %}
 {% endfor %}
