@@ -1,3 +1,6 @@
+{% for addbook in devices[inventory_hostname].addbook %}
+set security address-book global address {{ addbook }} {{ devices[inventory_hostname].addbook[addbook].address }}
+{% endfor %}
 {% for fromzone, fromzone_val in devices[inventory_hostname].fromzone.items() %}
 {% for sec_tozone, tozone_val in fromzone_val.sec_tozone.items() %}
 {% for policy_val in tozone_val.policy %}
@@ -10,4 +13,3 @@ set security policies from-zone {{ fromzone }} to-zone {{ sec_tozone }} policy {
 {% endfor %}
 {% endfor %}
 {% endfor %}
-

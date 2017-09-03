@@ -1,6 +1,13 @@
 ---
 devices:
   srx:
+    addbook:
+      'my_webserver':
+        address: 192.168.1.100/32
+      'my_ssh_server':
+        address: 192.168.2.100/32    
+      'some_good_source':
+        address: 172.16.1.0/24
     fromzone:
       'trust':
         sec_tozone: 
