@@ -1,0 +1,6 @@
+---
+- name: Junos template building
+  template:
+    src=main.j2
+    dest={{ build_dir }}/{{ inventory_hostname }}.conf
+

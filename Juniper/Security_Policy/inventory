@@ -1,0 +1,7 @@
+# file:
+[all:vars]
+
+[junos]
+srx
+
+

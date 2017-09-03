@@ -1,0 +1,13 @@
+{% for fromzone, fromzone_val in devices[inventory_hostname].fromzone.items() %}
+{% for sec_tozone, tozone_val in fromzone_val.sec_tozone.items() %}
+{% for policy_val in tozone_val.policy %}
+set security policies from-zone {{ fromzone }} to-zone {{ sec_tozone }} policy {{ policy_val.name }} match source-address {{ policy_val.source }}
+set security policies from-zone {{ fromzone }} to-zone {{ sec_tozone }} policy {{ policy_val.name }} match destination-address {{ policy_val.destination }}
+{% for application in policy_val.application %}
+set security policies from-zone {{ fromzone }} to-zone {{ sec_tozone }} policy {{ policy_val.name }} match application {{ application }}
+{% endfor %}
+set security policies from-zone {{ fromzone }} to-zone {{ sec_tozone }} policy {{ policy_val.name }} then {{ policy_val.action }}
+{% endfor %}
+{% endfor %}
+{% endfor %}
+

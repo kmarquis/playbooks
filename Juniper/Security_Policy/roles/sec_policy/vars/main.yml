@@ -1,0 +1,37 @@
+---
+devices:
+  srx:
+    fromzone:
+      'trust':
+        sec_tozone: 
+          'untrust':
+             policy:
+              - name: allow-all
+                source: any
+                destination: any
+                application: 
+                  - any
+                action: permit
+      'untrust':
+        sec_tozone: 
+          'trust':
+            policy:
+              - name: allow_webserver
+                source: any
+                destination: my_webserver
+                application: 
+                  - junos-http
+                  - junos-https
+                action: permit
+              - name: allow-ssh
+                source: some_good_source
+                destination: my_ssh_server
+                application: 
+                  - junos-ssh
+                action: permit
+              - name: deny-rest
+                source: any
+                destination: any
+                application: 
+                  - any
+                action: deny
