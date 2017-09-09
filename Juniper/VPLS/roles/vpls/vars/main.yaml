@@ -1,0 +1,24 @@
+---
+devices:
+  edge2:
+    interface:
+      'ge-0/0/2':
+        description: VPLS LINK to CE1
+      'ge-0/0/3':
+        description: VPLS LINK to CE2
+    vpls:
+      'vpls_customer_a':
+        vrf_rd: 100:0001
+        vrf_rt: 100:1001
+        template: default-template
+        site_range_id: 20
+        mac_table_size: 10
+        mac_limit: 5
+        vpls_site:
+           "Customer_a1":
+             site_id: 1
+             interface: ge-0/0/2
+           "Customer_a2":
+             site_id: 2
+             interface: ge-0/0/3
+

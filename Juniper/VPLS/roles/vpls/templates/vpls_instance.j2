@@ -1,0 +1,18 @@
+{% for vpls_name, vpls_val in devices[inventory_hostname].vpls.items() %}
+set routing-instances {{ vpls_name }} instance-type vpls
+{% for interface in devices[inventory_hostname].interface %}
+set routing-instances {{ vpls_name }} interface {{ interface }}
+{% endfor %}
+set routing-instances {{ vpls_name }} route-distinguisher {{ vpls_val.vrf_rd }}
+set routing-instances {{ vpls_name }} provider-tunnel rsvp-te label-switched-path-template {{ vpls_val.template }}
+set routing-instances {{ vpls_name }} vrf-target target:{{ vpls_val.vrf_rt }}
+set routing-instances {{ vpls_name }} protocols vpls site-range {{ vpls_val.site_range_id }}
+set routing-instances {{ vpls_name }} protocols vpls mac-table-size {{ vpls_val.mac_table_size }}
+set routing-instances {{ vpls_name }} protocols vpls interface-mac-limit {{ vpls_val.mac_limit }}
+set routing-instances {{ vpls_name }} protocols vpls interface-mac-limit packet-action drop
+set routing-instances {{ vpls_name }} protocols vpls no-tunnel-services
+{% for vpls_site, site in vpls_val.vpls_site.items() %}
+set routing-instances {{ vpls_name }} protocols vpls site {{ vpls_site }} site-identifier {{ site.site_id }}
+set routing-instances {{ vpls_name }} protocols vpls site {{ vpls_site }} interface {{ site.interface }}
+{% endfor %}
+{% endfor %}
