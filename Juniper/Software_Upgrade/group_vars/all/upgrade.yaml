@@ -1,0 +1,6 @@
+---
+cli:
+  host: "{{ inventory_hostname }}"
+  username: ansible
+  password: Ansible
+  transport: cli

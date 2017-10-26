@@ -1,0 +1,27 @@
+---
+devices:
+  switch1:
+    fwfilter:
+      "CODEC_CONTROL":
+        fwterm:
+          - name: MGT
+            dest_list: CODEC-CONTROL
+            protocol: tcp
+            dport:
+              - ssh
+              - http
+              - https
+            action: accept
+          - name: DNS
+            source_list: CODEC-DNS
+            dest_list: CODEC-CONTROL
+            protocol: udp
+            sport:
+              - domain
+            action: accept
+          - name: TRACEROUTE
+            dest_list: CODEC-CONTROL
+            protocol: udp
+            dport:
+              - 33434-33523
+            action: accept

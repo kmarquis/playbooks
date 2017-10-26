@@ -1,0 +1,5 @@
+---
+- name: Building Firewall Filter template 
+  template:
+      src: main.j2
+      dest: "{{ build_dir }}/{{ inventory_hostname }}.conf"

@@ -1,0 +1,1881 @@
+2017-10-21 16:09:41,078 p=6697 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:09:41,181 p=6697 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:09:41,191 p=6697 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************
+2017-10-21 16:09:41,191 p=6697 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:09:41,210 p=6697 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************
+2017-10-21 16:09:41,226 p=6697 u=marquk01 |  META: ran handlers
+2017-10-21 16:09:41,228 p=6697 u=marquk01 |  TASK [Obtain Login Details] ******************************************************************************************************************
+2017-10-21 16:09:41,228 p=6697 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:09:41,252 p=6697 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:09:41,254 p=6697 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************
+2017-10-21 16:09:41,254 p=6697 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:09:41,368 p=6697 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:09:41,589 p=6697 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:09:41,591 p=6697 u=marquk01 |  TASK [Install Junos OS package] **************************************************************************************************************
+2017-10-21 16:09:41,591 p=6697 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:33
+2017-10-21 16:09:41,802 p=6697 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_package.py
+2017-10-21 16:09:42,134 p=6697 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "auth_pass": null, 
+            "authorize": false, 
+            "force": false, 
+            "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "no_copy": false, 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": null, 
+            "provider": {
+                "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            }, 
+            "reboot": true, 
+            "src": "/Users/marquk01/Desktop/JunosVersion/junos-srxsme-12.3X48-D55.4-domestic.tgz", 
+            "ssh_keyfile": null, 
+            "timeout": 10, 
+            "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "version": null
+        }
+    }, 
+    "msg": "Unknown transport or no default transport specified"
+}
+2017-10-21 16:09:42,136 p=6697 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:09:42,136 p=6697 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************
+2017-10-21 16:09:42,136 p=6697 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:11:48,723 p=6742 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************
+2017-10-21 16:11:48,737 p=6742 u=marquk01 |  TASK [Obtain Login Details] ******************************************************************************************************************
+2017-10-21 16:11:48,758 p=6742 u=marquk01 |  ok: [192.168.1.150]
+2017-10-21 16:11:48,763 p=6742 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************
+2017-10-21 16:11:49,078 p=6742 u=marquk01 |  ok: [192.168.1.150]
+2017-10-21 16:11:49,080 p=6742 u=marquk01 |  TASK [Install Junos OS package] **************************************************************************************************************
+2017-10-21 16:11:49,602 p=6742 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {"changed": false, "failed": true, "msg": "Unknown transport or no default transport specified"}
+2017-10-21 16:11:49,604 p=6742 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:11:49,604 p=6742 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************
+2017-10-21 16:11:49,604 p=6742 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:13:01,091 p=6787 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:13:01,191 p=6787 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:13:01,201 p=6787 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************
+2017-10-21 16:13:01,201 p=6787 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:13:01,219 p=6787 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************
+2017-10-21 16:13:01,236 p=6787 u=marquk01 |  META: ran handlers
+2017-10-21 16:13:01,237 p=6787 u=marquk01 |  TASK [Obtain Login Details] ******************************************************************************************************************
+2017-10-21 16:13:01,237 p=6787 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:13:01,259 p=6787 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:13:01,261 p=6787 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************
+2017-10-21 16:13:01,261 p=6787 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:13:01,371 p=6787 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:13:01,603 p=6787 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:13:01,605 p=6787 u=marquk01 |  TASK [Install Junos OS package] **************************************************************************************************************
+2017-10-21 16:13:01,605 p=6787 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:33
+2017-10-21 16:13:01,817 p=6787 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_package.py
+2017-10-21 16:13:02,136 p=6787 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "auth_pass": null, 
+            "authorize": false, 
+            "force": false, 
+            "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "no_copy": false, 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": null, 
+            "provider": {
+                "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            }, 
+            "reboot": true, 
+            "src": "/Users/marquk01/Desktop/JunosVersion/junos-srxsme-12.3X48-D55.4-domestic.tgz", 
+            "ssh_keyfile": null, 
+            "timeout": 10, 
+            "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "version": null
+        }
+    }, 
+    "msg": "Unknown transport or no default transport specified"
+}
+2017-10-21 16:13:02,137 p=6787 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:13:02,138 p=6787 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************
+2017-10-21 16:13:02,138 p=6787 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:13:34,706 p=6832 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:13:34,814 p=6832 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:13:34,824 p=6832 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:13:34,824 p=6832 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:13:34,843 p=6832 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:13:34,860 p=6832 u=marquk01 |  META: ran handlers
+2017-10-21 16:13:34,862 p=6832 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:13:34,862 p=6832 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:13:34,881 p=6832 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:13:34,886 p=6832 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:13:34,887 p=6832 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:13:35,001 p=6832 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:13:35,193 p=6832 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:13:35,195 p=6832 u=marquk01 |  TASK [Install Junos OS package] ***************************************************************************************************************************************************
+2017-10-21 16:13:35,195 p=6832 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:33
+2017-10-21 16:13:35,400 p=6832 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_package.py
+2017-10-21 16:13:35,725 p=6832 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "auth_pass": null, 
+            "authorize": false, 
+            "force": false, 
+            "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "no_copy": false, 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": null, 
+            "provider": {
+                "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            }, 
+            "reboot": true, 
+            "src": "/Users/marquk01/Desktop/JunosVersion/junos-srxsme-12.3X48-D55.4-domestic.tgz", 
+            "ssh_keyfile": null, 
+            "timeout": 10, 
+            "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "version": null
+        }
+    }, 
+    "msg": "Unknown transport or no default transport specified"
+}
+2017-10-21 16:13:35,726 p=6832 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:13:35,727 p=6832 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:13:35,727 p=6832 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:14:21,067 p=6878 u=marquk01 |  ERROR! Missing target hosts
+2017-10-21 16:15:29,170 p=6889 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:15:29,271 p=6889 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:15:29,281 p=6889 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:15:29,281 p=6889 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:15:29,300 p=6889 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:15:29,317 p=6889 u=marquk01 |  META: ran handlers
+2017-10-21 16:15:29,318 p=6889 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:15:29,318 p=6889 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:15:29,340 p=6889 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:15:29,342 p=6889 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:15:29,343 p=6889 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:15:29,453 p=6889 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:15:29,662 p=6889 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:15:29,664 p=6889 u=marquk01 |  TASK [Install Junos OS package] ***************************************************************************************************************************************************
+2017-10-21 16:15:29,664 p=6889 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:33
+2017-10-21 16:15:29,870 p=6889 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_package.py
+2017-10-21 16:15:30,186 p=6889 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "auth_pass": null, 
+            "authorize": false, 
+            "force": false, 
+            "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "no_copy": false, 
+            "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "port": null, 
+            "provider": {
+                "host": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER"
+            }, 
+            "reboot": true, 
+            "src": "/Users/marquk01/Desktop/JunosVersion/junos-srxsme-12.3X48-D55.4-domestic.tgz", 
+            "ssh_keyfile": null, 
+            "timeout": 10, 
+            "transport": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "username": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+            "version": null
+        }
+    }, 
+    "msg": "Unknown transport or no default transport specified"
+}
+2017-10-21 16:15:30,188 p=6889 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:15:30,188 p=6889 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:15:30,188 p=6889 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:15:43,548 p=6932 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:15:43,652 p=6932 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:15:43,661 p=6932 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:15:43,662 p=6932 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:15:43,680 p=6932 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:15:43,698 p=6932 u=marquk01 |  META: ran handlers
+2017-10-21 16:15:43,699 p=6932 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:15:43,699 p=6932 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:15:43,720 p=6932 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:15:43,722 p=6932 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:15:43,722 p=6932 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:15:43,836 p=6932 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:15:44,053 p=6932 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:15:44,055 p=6932 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:15:44,055 p=6932 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:15:44,310 p=6957 u=marquk01 |  creating new control socket for host 192.168.1.150:830 as user kmarquis
+2017-10-21 16:15:44,310 p=6957 u=marquk01 |  control socket path is /Users/marquk01/.ansible/pc/9e1c5ee477
+2017-10-21 16:15:44,311 p=6957 u=marquk01 |  current working directory is /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade
+2017-10-21 16:15:44,311 p=6957 u=marquk01 |  using connection plugin netconf
+2017-10-21 16:15:44,360 p=6957 u=marquk01 |  network_os is set to junos
+2017-10-21 16:15:44,360 p=6957 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:15:44,662 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:15:45,014 p=6957 u=marquk01 |  connecting to host 192.168.1.150 returned an error
+2017-10-21 16:15:45,014 p=6957 u=marquk01 |  Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]
+2017-10-21 16:16:14,381 p=6957 u=marquk01 |  number of connection attempts exceeded, unable to connect to control socket
+2017-10-21 16:16:14,382 p=6957 u=marquk01 |  persistent_connect_interval=1, persistent_connect_retries=30
+2017-10-21 16:16:14,401 p=6932 u=marquk01 |  open_session() returned 255  failed to connect to control socket
+2017-10-21 16:16:14,406 p=6932 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "msg": "unable to open shell. Please see: https://docs.ansible.com/ansible/network_debug_troubleshooting.html#unable-to-open-shell", 
+    "rc": 255
+}
+2017-10-21 16:16:14,407 p=6932 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:16:14,407 p=6932 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:16:14,407 p=6932 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:18:51,823 p=6976 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:18:55,419 p=6976 u=marquk01 |  META: ran handlers
+2017-10-21 16:18:55,442 p=6976 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 16:18:55,443 p=6976 u=marquk01 |  192.168.1.150 | FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 16:23:16,625 p=6987 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:23:16,755 p=6987 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:23:16,792 p=6987 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:23:16,795 p=6987 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:23:16,839 p=6987 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:23:16,867 p=6987 u=marquk01 |  META: ran handlers
+2017-10-21 16:23:16,869 p=6987 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:23:16,869 p=6987 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:23:16,897 p=6987 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:23:16,899 p=6987 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:23:16,899 p=6987 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:23:17,019 p=6987 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:23:22,352 p=6987 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "elapsed": 5, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "msg": "Timeout when waiting for 192.168.1.150:830"
+}
+2017-10-21 16:23:22,354 p=6987 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:23:22,354 p=6987 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:23:22,354 p=6987 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 16:23:27,120 p=7012 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:23:27,227 p=7012 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:23:27,237 p=7012 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:23:27,237 p=7012 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:23:27,255 p=7012 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:23:27,273 p=7012 u=marquk01 |  META: ran handlers
+2017-10-21 16:23:27,275 p=7012 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:23:27,275 p=7012 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:23:27,295 p=7012 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:23:27,297 p=7012 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:23:27,297 p=7012 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:23:27,409 p=7012 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:23:32,725 p=7012 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "elapsed": 5, 
+    "failed": true, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "msg": "Timeout when waiting for 192.168.1.150:830"
+}
+2017-10-21 16:23:32,726 p=7012 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:23:32,726 p=7012 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:23:32,726 p=7012 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 16:24:36,102 p=7037 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:24:36,210 p=7037 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:24:36,224 p=7037 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:24:36,224 p=7037 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:24:36,244 p=7037 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:24:36,262 p=7037 u=marquk01 |  META: ran handlers
+2017-10-21 16:24:36,265 p=7037 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:24:36,265 p=7037 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:24:36,286 p=7037 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:24:36,288 p=7037 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:24:36,288 p=7037 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:24:36,398 p=7037 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:24:36,612 p=7037 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:24:36,614 p=7037 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:24:36,614 p=7037 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:24:36,884 p=7062 u=marquk01 |  creating new control socket for host 192.168.1.150:830 as user kmarquis
+2017-10-21 16:24:36,885 p=7062 u=marquk01 |  control socket path is /Users/marquk01/.ansible/pc/9e1c5ee477
+2017-10-21 16:24:36,885 p=7062 u=marquk01 |  current working directory is /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade
+2017-10-21 16:24:36,885 p=7062 u=marquk01 |  using connection plugin netconf
+2017-10-21 16:24:37,070 p=7062 u=marquk01 |  network_os is set to junos
+2017-10-21 16:24:37,070 p=7062 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:24:37,441 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:24:37,827 p=7062 u=marquk01 |  connecting to host 192.168.1.150 returned an error
+2017-10-21 16:24:37,828 p=7062 u=marquk01 |  Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]
+2017-10-21 16:25:06,978 p=7062 u=marquk01 |  number of connection attempts exceeded, unable to connect to control socket
+2017-10-21 16:25:06,979 p=7062 u=marquk01 |  persistent_connect_interval=1, persistent_connect_retries=30
+2017-10-21 16:25:07,000 p=7037 u=marquk01 |  open_session() returned 255  failed to connect to control socket
+2017-10-21 16:25:07,003 p=7037 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "msg": "unable to open shell. Please see: https://docs.ansible.com/ansible/network_debug_troubleshooting.html#unable-to-open-shell", 
+    "rc": 255
+}
+2017-10-21 16:25:07,005 p=7037 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:25:07,005 p=7037 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:25:07,005 p=7037 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:31:00,185 p=7080 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:31:00,324 p=7080 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:31:00,364 p=7080 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:31:00,364 p=7080 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:31:00,399 p=7080 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:31:00,433 p=7080 u=marquk01 |  META: ran handlers
+2017-10-21 16:31:00,436 p=7080 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:31:00,436 p=7080 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:31:00,463 p=7080 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:31:00,465 p=7080 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:31:00,465 p=7080 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:31:00,590 p=7080 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:31:00,818 p=7080 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:31:00,820 p=7080 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:31:00,820 p=7080 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:31:01,102 p=7105 u=marquk01 |  creating new control socket for host 192.168.1.150:830 as user kmarquis
+2017-10-21 16:31:01,103 p=7105 u=marquk01 |  control socket path is /Users/marquk01/.ansible/pc/9e1c5ee477
+2017-10-21 16:31:01,103 p=7105 u=marquk01 |  current working directory is /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade
+2017-10-21 16:31:01,103 p=7105 u=marquk01 |  using connection plugin netconf
+2017-10-21 16:31:01,294 p=7105 u=marquk01 |  network_os is set to junos
+2017-10-21 16:31:01,294 p=7105 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:31:01,657 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:31:01,940 p=7105 u=marquk01 |  connecting to host 192.168.1.150 returned an error
+2017-10-21 16:31:01,940 p=7105 u=marquk01 |  Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]
+2017-10-21 16:31:31,192 p=7105 u=marquk01 |  number of connection attempts exceeded, unable to connect to control socket
+2017-10-21 16:31:31,192 p=7105 u=marquk01 |  persistent_connect_interval=1, persistent_connect_retries=30
+2017-10-21 16:31:31,213 p=7080 u=marquk01 |  open_session() returned 255  failed to connect to control socket
+2017-10-21 16:31:31,217 p=7080 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "msg": "unable to open shell. Please see: https://docs.ansible.com/ansible/network_debug_troubleshooting.html#unable-to-open-shell", 
+    "rc": 255
+}
+2017-10-21 16:31:31,218 p=7080 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:31:31,219 p=7080 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:31:31,219 p=7080 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:33:07,480 p=7117 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:33:07,586 p=7117 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:33:07,596 p=7117 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:33:07,597 p=7117 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:33:07,615 p=7117 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:33:07,632 p=7117 u=marquk01 |  META: ran handlers
+2017-10-21 16:33:07,634 p=7117 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:33:07,634 p=7117 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:33:07,654 p=7117 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:33:07,656 p=7117 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:33:07,656 p=7117 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:33:07,771 p=7117 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:33:07,977 p=7117 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:33:07,980 p=7117 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:33:07,980 p=7117 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:33:08,251 p=7142 u=marquk01 |  creating new control socket for host 192.168.1.150:830 as user kmarquis
+2017-10-21 16:33:08,251 p=7142 u=marquk01 |  control socket path is /Users/marquk01/.ansible/pc/9e1c5ee477
+2017-10-21 16:33:08,252 p=7142 u=marquk01 |  current working directory is /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade
+2017-10-21 16:33:08,252 p=7142 u=marquk01 |  using connection plugin netconf
+2017-10-21 16:33:08,302 p=7142 u=marquk01 |  network_os is set to junos
+2017-10-21 16:33:08,302 p=7142 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:33:08,659 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:33:08,942 p=7142 u=marquk01 |  connecting to host 192.168.1.150 returned an error
+2017-10-21 16:33:08,942 p=7142 u=marquk01 |  Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]
+2017-10-21 16:33:38,357 p=7142 u=marquk01 |  number of connection attempts exceeded, unable to connect to control socket
+2017-10-21 16:33:38,358 p=7142 u=marquk01 |  persistent_connect_interval=1, persistent_connect_retries=30
+2017-10-21 16:33:38,378 p=7117 u=marquk01 |  open_session() returned 255  failed to connect to control socket
+2017-10-21 16:33:38,382 p=7117 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "msg": "unable to open shell. Please see: https://docs.ansible.com/ansible/network_debug_troubleshooting.html#unable-to-open-shell", 
+    "rc": 255
+}
+2017-10-21 16:33:38,383 p=7117 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:33:38,383 p=7117 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:33:38,383 p=7117 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:35:20,173 p=7153 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:35:20,296 p=7153 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:35:20,331 p=7153 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:35:20,337 p=7153 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:35:20,379 p=7153 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:35:20,405 p=7153 u=marquk01 |  META: ran handlers
+2017-10-21 16:35:20,407 p=7153 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:35:20,408 p=7153 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:35:20,582 p=7153 u=marquk01 |  network_os is set to default
+2017-10-21 16:35:20,589 p=7153 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:35:20,591 p=7153 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:35:20,591 p=7153 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:35:20,661 p=7153 u=marquk01 |  network_os is set to default
+2017-10-21 16:35:20,780 p=7153 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:35:20,780 p=7153 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:35:21,154 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:35:21,444 p=7153 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]", 
+    "unreachable": true
+}
+2017-10-21 16:35:21,446 p=7153 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:35:21,447 p=7153 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:35:21,447 p=7153 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=1    failed=0   
+2017-10-21 16:36:23,917 p=7163 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:36:24,058 p=7163 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:36:24,090 p=7163 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:36:24,090 p=7163 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:36:24,134 p=7163 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:36:24,162 p=7163 u=marquk01 |  META: ran handlers
+2017-10-21 16:36:24,165 p=7163 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:36:24,165 p=7163 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:36:24,348 p=7163 u=marquk01 |  network_os is set to default
+2017-10-21 16:36:24,355 p=7163 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:36:24,357 p=7163 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:36:24,357 p=7163 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:36:24,431 p=7163 u=marquk01 |  network_os is set to default
+2017-10-21 16:36:24,545 p=7163 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:36:24,545 p=7163 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:36:24,931 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:36:25,216 p=7163 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]", 
+    "unreachable": true
+}
+2017-10-21 16:36:25,218 p=7163 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:36:25,218 p=7163 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:36:25,219 p=7163 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=1    failed=0   
+2017-10-21 16:36:40,333 p=7171 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:36:40,443 p=7171 u=marquk01 |  Loading callback plugin default of type stdout, v2.0 from /Library/Python/2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2017-10-21 16:36:40,453 p=7171 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:36:40,454 p=7171 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:36:40,474 p=7171 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:36:40,492 p=7171 u=marquk01 |  META: ran handlers
+2017-10-21 16:36:40,494 p=7171 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:36:40,494 p=7171 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:36:40,518 p=7171 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:36:40,520 p=7171 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:36:40,520 p=7171 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:36:40,633 p=7171 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:36:40,855 p=7171 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:36:40,857 p=7171 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:36:40,857 p=7171 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:36:41,128 p=7196 u=marquk01 |  creating new control socket for host 192.168.1.150:830 as user kmarquis
+2017-10-21 16:36:41,129 p=7196 u=marquk01 |  control socket path is /Users/marquk01/.ansible/pc/9e1c5ee477
+2017-10-21 16:36:41,129 p=7196 u=marquk01 |  current working directory is /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade
+2017-10-21 16:36:41,129 p=7196 u=marquk01 |  using connection plugin netconf
+2017-10-21 16:36:41,179 p=7196 u=marquk01 |  network_os is set to junos
+2017-10-21 16:36:41,179 p=7196 u=marquk01 |  ssh connection done, stating ncclient
+2017-10-21 16:36:41,471 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2017-10-21 16:36:41,756 p=7196 u=marquk01 |  connecting to host 192.168.1.150 returned an error
+2017-10-21 16:36:41,756 p=7196 u=marquk01 |  Unknown host key [c8:09:ce:20:41:f6:45:a6:8f:c9:15:c0:05:5a:13:8f] for [192.168.1.150]
+2017-10-21 16:37:11,198 p=7196 u=marquk01 |  number of connection attempts exceeded, unable to connect to control socket
+2017-10-21 16:37:11,199 p=7196 u=marquk01 |  persistent_connect_interval=1, persistent_connect_retries=30
+2017-10-21 16:37:11,221 p=7171 u=marquk01 |  open_session() returned 255  failed to connect to control socket
+2017-10-21 16:37:11,225 p=7171 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "changed": false, 
+    "failed": true, 
+    "msg": "unable to open shell. Please see: https://docs.ansible.com/ansible/network_debug_troubleshooting.html#unable-to-open-shell", 
+    "rc": 255
+}
+2017-10-21 16:37:11,226 p=7171 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:37:11,226 p=7171 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:37:11,227 p=7171 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:41:18,787 p=7207 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:41:18,831 p=7207 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:41:18,855 p=7207 u=marquk01 |  ok: [192.168.1.150]
+2017-10-21 16:41:18,858 p=7207 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:41:19,181 p=7207 u=marquk01 |  ok: [192.168.1.150]
+2017-10-21 16:41:19,184 p=7207 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:41:19,225 p=7207 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-21 16:41:19,225 p=7207 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {"failed": true, "msg": "Unexpected failure during module execution.", "stdout": ""}
+2017-10-21 16:41:19,227 p=7207 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:41:19,227 p=7207 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:41:19,227 p=7207 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:41:26,867 p=7232 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:41:26,979 p=7232 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:41:26,979 p=7232 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:41:26,998 p=7232 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:41:27,011 p=7232 u=marquk01 |  META: ran handlers
+2017-10-21 16:41:27,012 p=7232 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:41:27,013 p=7232 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:41:27,038 p=7232 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:41:27,040 p=7232 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:41:27,041 p=7232 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:41:27,157 p=7232 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:41:27,362 p=7232 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:41:27,364 p=7232 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:41:27,365 p=7232 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:41:27,389 p=7232 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 16:41:27,390 p=7232 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 16:41:27,391 p=7232 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:41:27,391 p=7232 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:41:27,391 p=7232 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 16:45:22,782 p=7270 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 16:45:22,893 p=7270 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 16:45:22,894 p=7270 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 16:45:22,912 p=7270 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 16:45:22,924 p=7270 u=marquk01 |  META: ran handlers
+2017-10-21 16:45:22,925 p=7270 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 16:45:22,925 p=7270 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 16:45:22,950 p=7270 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 16:45:22,953 p=7270 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 16:45:22,954 p=7270 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 16:45:23,080 p=7270 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 16:45:23,297 p=7270 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 16:45:23,300 p=7270 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 16:45:23,300 p=7270 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 16:45:23,324 p=7270 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 16:45:23,324 p=7270 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 16:45:23,325 p=7270 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 16:45:23,326 p=7270 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 16:45:23,326 p=7270 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 17:01:45,494 p=7373 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:01:45,645 p=7373 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:01:45,646 p=7373 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:01:45,719 p=7373 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:01:45,772 p=7373 u=marquk01 |  META: ran handlers
+2017-10-21 17:01:45,774 p=7373 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 17:01:45,774 p=7373 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 17:01:45,798 p=7373 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 17:01:45,800 p=7373 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:01:45,800 p=7373 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 17:01:45,917 p=7373 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:01:46,139 p=7373 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:01:46,141 p=7373 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:01:46,141 p=7373 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 17:01:46,181 p=7373 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:01:46,181 p=7373 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:01:46,182 p=7373 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:01:46,183 p=7373 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:01:46,183 p=7373 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 17:02:06,889 p=7398 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:02:07,004 p=7398 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:02:07,005 p=7398 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:02:07,026 p=7398 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:02:07,038 p=7398 u=marquk01 |  META: ran handlers
+2017-10-21 17:02:07,044 p=7398 u=marquk01 |  TASK [Obtain Login Details] *******************************************************************************************************************************************************
+2017-10-21 17:02:07,044 p=7398 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-21 17:02:07,064 p=7398 u=marquk01 |  ok: [192.168.1.150] => {
+    "ansible_facts": {
+        "logins": {
+            "host": "{{ inventory_hostname }}", 
+            "password": "Twista1234", 
+            "transport": "netconf", 
+            "username": "kmarquis"
+        }
+    }, 
+    "changed": false
+}
+2017-10-21 17:02:07,066 p=7398 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:02:07,067 p=7398 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:22
+2017-10-21 17:02:07,184 p=7398 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:02:07,409 p=7398 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:02:07,411 p=7398 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:02:07,412 p=7398 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:28
+2017-10-21 17:02:07,437 p=7398 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:02:07,437 p=7398 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:02:07,439 p=7398 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:02:07,439 p=7398 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:02:07,439 p=7398 u=marquk01 |  192.168.1.150              : ok=2    changed=0    unreachable=0    failed=1   
+2017-10-21 17:20:20,641 p=7437 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:20:20,663 p=7437 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Checking NETCONF connectivity
+   ^ here
+
+2017-10-21 17:20:39,872 p=7443 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:20:39,903 p=7443 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Checking NETCONF connectivity
+   ^ here
+
+2017-10-21 17:20:56,074 p=7449 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:20:56,099 p=7449 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Checking NETCONF connectivity
+   ^ here
+
+2017-10-21 17:21:12,244 p=7455 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:21:12,268 p=7455 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Checking NETCONF connectivity
+   ^ here
+
+2017-10-21 17:21:23,596 p=7461 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:21:23,621 p=7461 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 3, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+  - name: Checking NETCONF connectivity
+  ^ here
+
+2017-10-21 17:21:29,995 p=7468 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:21:30,017 p=7468 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml': line 19, column 4, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+
+   - name: Checking NETCONF connectivity
+   ^ here
+
+2017-10-21 17:22:04,559 p=7474 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:22:04,672 p=7474 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:22:04,673 p=7474 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:22:04,693 p=7474 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:22:04,704 p=7474 u=marquk01 |  META: ran handlers
+2017-10-21 17:22:04,706 p=7474 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:22:04,706 p=7474 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:20
+2017-10-21 17:22:04,821 p=7474 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:22:05,041 p=7474 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:22:05,043 p=7474 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:22:05,043 p=7474 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:26
+2017-10-21 17:22:05,072 p=7474 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:22:05,072 p=7474 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:22:05,073 p=7474 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:22:05,073 p=7474 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:22:05,073 p=7474 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 17:27:24,555 p=7520 u=marquk01 |   [WARNING]: module provider not found in /Library/Python/2.7/site-packages/ansible/modules:/Library/Python/2.7/site-packages/ansible/modules/cloud:/Library/Python/2.7/site-
+packages/ansible/modules/clustering:/Library/Python/2.7/site-packages/ansible/modules/commands:/Library/Python/2.7/site-packages/ansible/modules/core:/Library/Python/2.7/site-
+packages/ansible/modules/crypto:/Library/Python/2.7/site-packages/ansible/modules/database:/Library/Python/2.7/site-packages/ansible/modules/extras:/Library/Python/2.7/site-
+packages/ansible/modules/files:/Library/Python/2.7/site-packages/ansible/modules/identity:/Library/Python/2.7/site-packages/ansible/modules/inventory:/Library/Python/2.7/site-
+packages/ansible/modules/messaging:/Library/Python/2.7/site-packages/ansible/modules/monitoring:/Library/Python/2.7/site-packages/ansible/modules/network:/Library/Python/2.7
+/site-packages/ansible/modules/notification:/Library/Python/2.7/site-packages/ansible/modules/packaging:/Library/Python/2.7/site-
+packages/ansible/modules/remote_management:/Library/Python/2.7/site-packages/ansible/modules/source_control:/Library/Python/2.7/site-
+packages/ansible/modules/storage:/Library/Python/2.7/site-packages/ansible/modules/system:/Library/Python/2.7/site-packages/ansible/modules/utilities:/Library/Python/2.7/site-
+packages/ansible/modules/web_infrastructure:/Library/Python/2.7/site-packages/ansible/modules/cloud/amazon:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/atomic:/Library/Python/2.7/site-packages/ansible/modules/cloud/azure:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/centurylink:/Library/Python/2.7/site-packages/ansible/modules/cloud/cloudscale:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/cloudstack:/Library/Python/2.7/site-packages/ansible/modules/cloud/digital_ocean:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/dimensiondata:/Library/Python/2.7/site-packages/ansible/modules/cloud/docker:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/google:/Library/Python/2.7/site-packages/ansible/modules/cloud/linode:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/lxc:/Library/Python/2.7/site-packages/ansible/modules/cloud/lxd:/Library/Python/2.7/site-packages/ansible/modules/cloud/misc:/Library/Python/2.7
+/site-packages/ansible/modules/cloud/openstack:/Library/Python/2.7/site-packages/ansible/modules/cloud/ovh:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/ovirt:/Library/Python/2.7/site-packages/ansible/modules/cloud/packet:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/profitbricks:/Library/Python/2.7/site-packages/ansible/modules/cloud/pubnub:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/rackspace:/Library/Python/2.7/site-packages/ansible/modules/cloud/smartos:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/softlayer:/Library/Python/2.7/site-packages/ansible/modules/cloud/univention:/Library/Python/2.7/site-
+packages/ansible/modules/cloud/vmware:/Library/Python/2.7/site-packages/ansible/modules/cloud/webfaction:/Library/Python/2.7/site-
+packages/ansible/modules/core/cloud:/Library/Python/2.7/site-packages/ansible/modules/core/commands:/Library/Python/2.7/site-
+packages/ansible/modules/core/database:/Library/Python/2.7/site-packages/ansible/modules/core/files:/Library/Python/2.7/site-
+packages/ansible/modules/core/inventory:/Library/Python/2.7/site-packages/ansible/modules/core/network:/Library/Python/2.7/site-
+packages/ansible/modules/core/packaging:/Library/Python/2.7/site-packages/ansible/modules/core/source_control:/Library/Python/2.7/site-
+packages/ansible/modules/core/system:/Library/Python/2.7/site-packages/ansible/modules/core/utilities:/Library/Python/2.7/site-
+packages/ansible/modules/core/web_infrastructure:/Library/Python/2.7/site-packages/ansible/modules/core/cloud/amazon:/Library/Python/2.7/site-
+packages/ansible/modules/core/cloud/azure:/Library/Python/2.7/site-packages/ansible/modules/core/cloud/digital_ocean:/Library/Python/2.7/site-
+packages/ansible/modules/core/cloud/docker:/Library/Python/2.7/site-packages/ansible/modules/core/cloud/google:/Library/Python/2.7/site-
+packages/ansible/modules/core/cloud/linode:/Library/Python/2.7/site-packages/ansible/modules/core/cloud/openstack:/Library/Python/2.7/site-
+packages/ansible/modules/core/cloud/rackspace:/Library/Python/2.7/site-packages/ansible/modules/core/cloud/vmware:/Library/Python/2.7/site-
+packages/ansible/modules/core/database/mysql:/Library/Python/2.7/site-packages/ansible/modules/core/database/postgresql:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/basics:/Library/Python/2.7/site-packages/ansible/modules/core/network/cumulus:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/dellos10:/Library/Python/2.7/site-packages/ansible/modules/core/network/dellos6:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/dellos9:/Library/Python/2.7/site-packages/ansible/modules/core/network/eos:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/ios:/Library/Python/2.7/site-packages/ansible/modules/core/network/iosxr:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/junos:/Library/Python/2.7/site-packages/ansible/modules/core/network/netvisor:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/nxos:/Library/Python/2.7/site-packages/ansible/modules/core/network/openswitch:/Library/Python/2.7/site-
+packages/ansible/modules/core/network/sros:/Library/Python/2.7/site-packages/ansible/modules/core/network/vyos:/Library/Python/2.7/site-
+packages/ansible/modules/core/packaging/language:/Library/Python/2.7/site-packages/ansible/modules/core/packaging/os:/Library/Python/2.7/site-
+packages/ansible/modules/core/utilities/helper:/Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic:/Library/Python/2.7/site-
+packages/ansible/modules/database/influxdb:/Library/Python/2.7/site-packages/ansible/modules/database/misc:/Library/Python/2.7/site-
+packages/ansible/modules/database/mongodb:/Library/Python/2.7/site-packages/ansible/modules/database/mssql:/Library/Python/2.7/site-
+packages/ansible/modules/database/mysql:/Library/Python/2.7/site-packages/ansible/modules/database/postgresql:/Library/Python/2.7/site-
+packages/ansible/modules/database/proxysql:/Library/Python/2.7/site-packages/ansible/modules/database/vertica:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud:/Library/Python/2.7/site-packages/ansible/modules/extras/clustering:/Library/Python/2.7/site-
+packages/ansible/modules/extras/commands:/Library/Python/2.7/site-packages/ansible/modules/extras/database:/Library/Python/2.7/site-
+packages/ansible/modules/extras/files:/Library/Python/2.7/site-packages/ansible/modules/extras/identity:/Library/Python/2.7/site-
+packages/ansible/modules/extras/messaging:/Library/Python/2.7/site-packages/ansible/modules/extras/monitoring:/Library/Python/2.7/site-
+packages/ansible/modules/extras/network:/Library/Python/2.7/site-packages/ansible/modules/extras/notification:/Library/Python/2.7/site-
+packages/ansible/modules/extras/packaging:/Library/Python/2.7/site-packages/ansible/modules/extras/remote_management:/Library/Python/2.7/site-
+packages/ansible/modules/extras/source_control:/Library/Python/2.7/site-packages/ansible/modules/extras/storage:/Library/Python/2.7/site-
+packages/ansible/modules/extras/system:/Library/Python/2.7/site-packages/ansible/modules/extras/univention:/Library/Python/2.7/site-
+packages/ansible/modules/extras/web_infrastructure:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/amazon:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/atomic:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/azure:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/centurylink:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/cloudstack:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/google:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/lxc:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/lxd:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/misc:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/openstack:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/ovh:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/ovirt:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/profitbricks:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/rackspace:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/smartos:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/softlayer:/Library/Python/2.7/site-packages/ansible/modules/extras/cloud/vmware:/Library/Python/2.7/site-
+packages/ansible/modules/extras/cloud/webfaction:/Library/Python/2.7/site-packages/ansible/modules/extras/database/influxdb:/Library/Python/2.7/site-
+packages/ansible/modules/extras/database/misc:/Library/Python/2.7/site-packages/ansible/modules/extras/database/mssql:/Library/Python/2.7/site-
+packages/ansible/modules/extras/database/mysql:/Library/Python/2.7/site-packages/ansible/modules/extras/database/postgresql:/Library/Python/2.7/site-
+packages/ansible/modules/extras/database/vertica:/Library/Python/2.7/site-packages/ansible/modules/extras/identity/opendj:/Library/Python/2.7/site-
+packages/ansible/modules/extras/network/a10:/Library/Python/2.7/site-packages/ansible/modules/extras/network/asa:/Library/Python/2.7/site-
+packages/ansible/modules/extras/network/citrix:/Library/Python/2.7/site-packages/ansible/modules/extras/network/exoscale:/Library/Python/2.7/site-
+packages/ansible/modules/extras/network/f5:/Library/Python/2.7/site-packages/ansible/modules/extras/network/illumos:/Library/Python/2.7/site-
+packages/ansible/modules/extras/network/netconf:/Library/Python/2.7/site-packages/ansible/modules/extras/packaging/language:/Library/Python/2.7/site-
+packages/ansible/modules/extras/packaging/os:/Library/Python/2.7/site-packages/ansible/modules/extras/remote_management/ipmi:/Library/Python/2.7/site-
+packages/ansible/modules/extras/storage/netapp:/Library/Python/2.7/site-packages/ansible/modules/identity/ipa:/Library/Python/2.7/site-
+packages/ansible/modules/identity/opendj:/Library/Python/2.7/site-packages/ansible/modules/network/a10:/Library/Python/2.7/site-
+packages/ansible/modules/network/aos:/Library/Python/2.7/site-packages/ansible/modules/network/asa:/Library/Python/2.7/site-
+packages/ansible/modules/network/avi:/Library/Python/2.7/site-packages/ansible/modules/network/basics:/Library/Python/2.7/site-
+packages/ansible/modules/network/bigswitch:/Library/Python/2.7/site-packages/ansible/modules/network/citrix:/Library/Python/2.7/site-
+packages/ansible/modules/network/cloudengine:/Library/Python/2.7/site-packages/ansible/modules/network/cumulus:/Library/Python/2.7/site-
+packages/ansible/modules/network/dellos10:/Library/Python/2.7/site-packages/ansible/modules/network/dellos6:/Library/Python/2.7/site-
+packages/ansible/modules/network/dellos9:/Library/Python/2.7/site-packages/ansible/modules/network/eos:/Library/Python/2.7/site-
+packages/ansible/modules/network/exoscale:/Library/Python/2.7/site-packages/ansible/modules/network/f5:/Library/Python/2.7/site-
+packages/ansible/modules/network/fortios:/Library/Python/2.7/site-packages/ansible/modules/network/illumos:/Library/Python/2.7/site-
+packages/ansible/modules/network/ios:/Library/Python/2.7/site-packages/ansible/modules/network/iosxr:/Library/Python/2.7/site-
+packages/ansible/modules/network/junos:/Library/Python/2.7/site-packages/ansible/modules/network/lenovo:/Library/Python/2.7/site-
+packages/ansible/modules/network/netconf:/Library/Python/2.7/site-packages/ansible/modules/network/netvisor:/Library/Python/2.7/site-
+packages/ansible/modules/network/nxos:/Library/Python/2.7/site-packages/ansible/modules/network/openswitch:/Library/Python/2.7/site-
+packages/ansible/modules/network/ordnance:/Library/Python/2.7/site-packages/ansible/modules/network/ovs:/Library/Python/2.7/site-
+packages/ansible/modules/network/panos:/Library/Python/2.7/site-packages/ansible/modules/network/sros:/Library/Python/2.7/site-
+packages/ansible/modules/network/vyos:/Library/Python/2.7/site-packages/ansible/modules/packaging/language:/Library/Python/2.7/site-
+packages/ansible/modules/packaging/os:/Library/Python/2.7/site-packages/ansible/modules/remote_management/foreman:/Library/Python/2.7/site-
+packages/ansible/modules/remote_management/hpilo:/Library/Python/2.7/site-packages/ansible/modules/remote_management/ipmi:/Library/Python/2.7/site-
+packages/ansible/modules/remote_management/stacki:/Library/Python/2.7/site-packages/ansible/modules/storage/infinidat:/Library/Python/2.7/site-
+packages/ansible/modules/storage/netapp:/Library/Python/2.7/site-packages/ansible/modules/storage/zfs:/Library/Python/2.7/site-
+packages/ansible/modules/utilities/helper:/Library/Python/2.7/site-packages/ansible/modules/utilities/logic:/Library/Python/2.7/site-
+packages/ansible/modules/web_infrastructure/ansible_tower:/Library/Python/2.7/site-packages/ansible/modules/windows:/Library/Python/2.7/site-
+packages/ansible/modules/core/windows:/Library/Python/2.7/site-packages/ansible/modules/extras/windows
+
+2017-10-21 17:38:19,097 p=7541 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:38:19,243 p=7541 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:38:19,244 p=7541 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:38:19,290 p=7541 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:38:19,319 p=7541 u=marquk01 |  META: ran handlers
+2017-10-21 17:38:19,321 p=7541 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:38:19,321 p=7541 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:20
+2017-10-21 17:38:19,441 p=7541 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:38:19,651 p=7541 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:38:19,653 p=7541 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:38:19,653 p=7541 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:26
+2017-10-21 17:38:19,692 p=7541 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:38:19,692 p=7541 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:38:19,693 p=7541 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:38:19,693 p=7541 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:38:19,693 p=7541 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 17:40:03,533 p=7569 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:40:03,683 p=7569 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:40:03,684 p=7569 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:40:03,734 p=7569 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:40:03,762 p=7569 u=marquk01 |  META: ran handlers
+2017-10-21 17:40:03,764 p=7569 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:40:03,764 p=7569 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:20
+2017-10-21 17:40:03,886 p=7569 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:40:04,086 p=7569 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:40:04,089 p=7569 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:40:04,089 p=7569 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:26
+2017-10-21 17:40:04,128 p=7569 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:40:04,129 p=7569 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:40:04,130 p=7569 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:40:04,130 p=7569 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:40:04,130 p=7569 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 17:43:19,980 p=7604 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 17:43:20,140 p=7604 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml *********************************************************************************************************************************************
+2017-10-21 17:43:20,141 p=7604 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-21 17:43:20,190 p=7604 u=marquk01 |  PLAY [Install Junos OS] ***********************************************************************************************************************************************************
+2017-10-21 17:43:20,215 p=7604 u=marquk01 |  META: ran handlers
+2017-10-21 17:43:20,217 p=7604 u=marquk01 |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2017-10-21 17:43:20,217 p=7604 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:20
+2017-10-21 17:43:20,343 p=7604 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-21 17:43:20,572 p=7604 u=marquk01 |  ok: [192.168.1.150] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.150", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-21 17:43:20,574 p=7604 u=marquk01 |  TASK [Check Device Current Junos Version] *****************************************************************************************************************************************
+2017-10-21 17:43:20,574 p=7604 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:26
+2017-10-21 17:43:20,614 p=7604 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 17:43:20,615 p=7604 u=marquk01 |  fatal: [192.168.1.150]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 17:43:20,616 p=7604 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-21 17:43:20,616 p=7604 u=marquk01 |  PLAY RECAP ************************************************************************************************************************************************************************
+2017-10-21 17:43:20,616 p=7604 u=marquk01 |  192.168.1.150              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-21 18:31:02,596 p=7728 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-21 18:31:02,597 p=7728 u=marquk01 |  192.168.1.150 | FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-21 18:31:15,209 p=7734 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-21 18:31:18,735 p=7734 u=marquk01 |  META: ran handlers
+2017-10-21 18:31:18,758 p=7734 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-21 18:31:18,758 p=7734 u=marquk01 |  192.168.1.150 | FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-22 13:01:18,557 p=8056 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:01:18,602 p=8056 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:01:19,515 p=8056 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\n@    WARNING: REMOTE HOST IDENTIFICATION HAS CHANGED!     @\r\n@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@\r\nIT IS POSSIBLE THAT SOMEONE IS DOING SOMETHING NASTY!\r\nSomeone could be eavesdropping on you right now (man-in-the-middle attack)!\r\nIt is also possible that a host key has just been changed.\r\nThe fingerprint for the ECDSA key sent by the remote host is\nSHA256:USqnmOtkkQgKwa8q3/PtRXx0G0b9YS3CFdWirap+nEk.\r\nPlease contact your system administrator.\r\nAdd correct host key in /Users/marquk01/.ssh/known_hosts to get rid of this message.\r\nOffending ECDSA key in /Users/marquk01/.ssh/known_hosts:38\r\nECDSA host key for 192.168.1.150 has changed and you have requested strict checking.\r\nHost key verification failed.\r\n", "unreachable": true}
+2017-10-22 13:01:19,517 p=8056 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:01:19,517 p=8056 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:01:19,517 p=8056 u=marquk01 |  192.168.1.150              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:02:42,157 p=8067 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:02:42,203 p=8067 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:02:48,756 p=8067 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '192.168.1.150' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey,password,keyboard-interactive).\r\n", "unreachable": true}
+2017-10-22 13:02:48,757 p=8067 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:02:48,757 p=8067 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:02:48,758 p=8067 u=marquk01 |  192.168.1.150              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:04:38,843 p=8093 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:04:38,885 p=8093 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:04:41,806 p=8093 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {"changed": false, "msg": "Failed to connect to the host via ssh: Warning: Permanently added '192.168.1.150' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey,password,keyboard-interactive).\r\n", "unreachable": true}
+2017-10-22 13:04:41,807 p=8093 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:04:41,808 p=8093 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:04:41,808 p=8093 u=marquk01 |  192.168.1.150              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:04:55,455 p=8103 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-22 13:04:55,575 p=8103 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************************************
+2017-10-22 13:04:55,576 p=8103 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-22 13:04:55,594 p=8103 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:04:55,605 p=8103 u=marquk01 |  META: ran handlers
+2017-10-22 13:04:55,607 p=8103 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:04:55,607 p=8103 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-22 13:04:55,722 p=8103 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-22 13:04:56,345 p=8103 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh: Permission denied (publickey,password,keyboard-interactive).\r\n", 
+    "unreachable": true
+}
+2017-10-22 13:04:56,347 p=8103 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:04:56,347 p=8103 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:04:56,347 p=8103 u=marquk01 |  192.168.1.150              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:06:19,351 p=8113 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-22 13:06:19,463 p=8113 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************************************
+2017-10-22 13:06:19,464 p=8113 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-22 13:06:19,482 p=8113 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:06:19,494 p=8113 u=marquk01 |  META: ran handlers
+2017-10-22 13:06:19,495 p=8113 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:06:19,495 p=8113 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-22 13:06:19,608 p=8113 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-22 13:06:20,275 p=8113 u=marquk01 |  fatal: [192.168.1.150]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh: Permission denied (publickey,password,keyboard-interactive).\r\n", 
+    "unreachable": true
+}
+2017-10-22 13:06:20,277 p=8113 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:06:20,277 p=8113 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:06:20,277 p=8113 u=marquk01 |  192.168.1.150              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:08:04,250 p=8130 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-22 13:08:04,395 p=8130 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************************************
+2017-10-22 13:08:04,396 p=8130 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-22 13:08:04,445 p=8130 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:08:04,478 p=8130 u=marquk01 |  META: ran handlers
+2017-10-22 13:08:04,480 p=8130 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:08:04,480 p=8130 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:19
+2017-10-22 13:08:04,602 p=8130 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-22 13:08:10,615 p=8130 u=marquk01 |  fatal: [192.168.1.151]: UNREACHABLE! => {
+    "changed": false, 
+    "msg": "Failed to connect to the host via ssh: Warning: Permanently added '192.168.1.151' (ECDSA) to the list of known hosts.\r\nPermission denied (publickey,password,keyboard-interactive).\r\n", 
+    "unreachable": true
+}
+2017-10-22 13:08:10,617 p=8130 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:08:10,617 p=8130 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:08:10,617 p=8130 u=marquk01 |  192.168.1.151              : ok=0    changed=0    unreachable=1    failed=0   
+2017-10-22 13:09:59,794 p=8140 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-22 13:09:59,904 p=8140 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************************************
+2017-10-22 13:09:59,905 p=8140 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-22 13:09:59,928 p=8140 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:09:59,945 p=8140 u=marquk01 |  META: ran handlers
+2017-10-22 13:09:59,947 p=8140 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:09:59,947 p=8140 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:18
+2017-10-22 13:10:00,066 p=8140 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-22 13:10:00,317 p=8140 u=marquk01 |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.151", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-22 13:10:00,320 p=8140 u=marquk01 |  TASK [Check Device Current Junos Version] ****************************************************************************************************************************
+2017-10-22 13:10:00,320 p=8140 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:24
+2017-10-22 13:10:00,360 p=8140 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-22 13:10:00,360 p=8140 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-22 13:10:00,361 p=8140 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:10:00,362 p=8140 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:10:00,362 p=8140 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-22 13:16:41,038 p=8179 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/ansible.cfg as config file
+2017-10-22 13:16:41,201 p=8179 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ********************************************************************************************************************************
+2017-10-22 13:16:41,201 p=8179 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-22 13:16:41,248 p=8179 u=marquk01 |  PLAY [Install Junos OS] **********************************************************************************************************************************************
+2017-10-22 13:16:41,276 p=8179 u=marquk01 |  META: ran handlers
+2017-10-22 13:16:41,278 p=8179 u=marquk01 |  TASK [Checking NETCONF connectivity] *********************************************************************************************************************************
+2017-10-22 13:16:41,278 p=8179 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:18
+2017-10-22 13:16:41,402 p=8179 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-22 13:16:41,626 p=8179 u=marquk01 |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.151", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-22 13:16:41,628 p=8179 u=marquk01 |  TASK [Check Device Current Junos Version] ****************************************************************************************************************************
+2017-10-22 13:16:41,628 p=8179 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.yaml:24
+2017-10-22 13:16:41,668 p=8179 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-22 13:16:41,668 p=8179 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-22 13:16:41,669 p=8179 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software Upgrade/junos_upgrade_playbook.retry
+
+2017-10-22 13:16:41,669 p=8179 u=marquk01 |  PLAY RECAP ***********************************************************************************************************************************************************
+2017-10-22 13:16:41,669 p=8179 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 21:39:02,431 p=16195 u=marquk01 |  ERROR! Syntax Error while loading YAML.
+
+
+The error appears to have been in '/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.yaml': line 49, column 7, but may
+be elsewhere in the file depending on the exact syntax problem.
+
+The offending line appears to be:
+
+        timeout: "{{ wait_time }}"
+      when: not upgrade.check_mode
+      ^ here
+
+2017-10-25 21:41:12,048 p=16205 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 21:41:12,417 p=16205 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 21:41:12,831 p=16205 u=marquk01 |  ok: [192.168.1.151]
+2017-10-25 21:41:12,833 p=16205 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 21:41:12,963 p=16205 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-25 21:41:12,964 p=16205 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {"failed": true, "msg": "Unexpected failure during module execution.", "stdout": ""}
+2017-10-25 21:41:12,966 p=16205 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 21:41:12,966 p=16205 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 21:41:12,966 p=16205 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 21:42:49,384 p=16230 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 21:42:49,398 p=16230 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 21:42:49,712 p=16230 u=marquk01 |  ok: [192.168.1.151]
+2017-10-25 21:42:49,715 p=16230 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 21:42:49,742 p=16230 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-25 21:42:49,742 p=16230 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {"failed": true, "msg": "Unexpected failure during module execution.", "stdout": ""}
+2017-10-25 21:42:49,743 p=16230 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 21:42:49,744 p=16230 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 21:42:49,744 p=16230 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 21:43:35,521 p=16255 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 21:43:35,534 p=16255 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 21:43:35,878 p=16255 u=marquk01 |  ok: [192.168.1.151]
+2017-10-25 21:43:35,881 p=16255 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 21:43:35,907 p=16255 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-25 21:43:35,907 p=16255 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {"failed": true, "msg": "Unexpected failure during module execution.", "stdout": ""}
+2017-10-25 21:43:35,908 p=16255 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 21:43:35,909 p=16255 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 21:43:35,909 p=16255 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 21:43:59,891 p=16284 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 21:43:59,904 p=16284 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 21:44:00,240 p=16284 u=marquk01 |  ok: [192.168.1.151]
+2017-10-25 21:44:00,242 p=16284 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 21:44:00,273 p=16284 u=marquk01 |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: ImportError: cannot import name xml_to_json
+2017-10-25 21:44:00,276 p=16284 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {"failed": true, "msg": "Unexpected failure during module execution.", "stdout": ""}
+2017-10-25 21:44:00,277 p=16284 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 21:44:00,278 p=16284 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 21:44:00,278 p=16284 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 22:01:03,544 p=16342 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/ansible.cfg as config file
+2017-10-25 22:01:03,747 p=16342 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ************************************************************************************************************************
+2017-10-25 22:01:03,748 p=16342 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-25 22:01:03,797 p=16342 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 22:01:03,835 p=16342 u=marquk01 |  META: ran handlers
+2017-10-25 22:01:03,836 p=16342 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 22:01:03,837 p=16342 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.yaml:17
+2017-10-25 22:01:03,963 p=16342 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-25 22:01:04,165 p=16342 u=marquk01 |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.151", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-25 22:01:04,167 p=16342 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 22:01:04,167 p=16342 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.yaml:23
+2017-10-25 22:01:04,204 p=16342 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-25 22:01:04,204 p=16342 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-25 22:01:04,206 p=16342 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 22:01:04,206 p=16342 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 22:01:04,206 p=16342 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   
+2017-10-25 22:02:13,456 p=16368 u=marquk01 |  Using /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/ansible.cfg as config file
+2017-10-25 22:02:13,566 p=16368 u=marquk01 |  PLAYBOOK: junos_upgrade_playbook.yaml ************************************************************************************************************************
+2017-10-25 22:02:13,567 p=16368 u=marquk01 |  1 plays in junos_upgrade_playbook.yaml
+2017-10-25 22:02:13,585 p=16368 u=marquk01 |  PLAY [Install Junos OS] **************************************************************************************************************************************
+2017-10-25 22:02:13,597 p=16368 u=marquk01 |  META: ran handlers
+2017-10-25 22:02:13,599 p=16368 u=marquk01 |  TASK [Checking NETCONF connectivity] *************************************************************************************************************************
+2017-10-25 22:02:13,599 p=16368 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.yaml:17
+2017-10-25 22:02:13,711 p=16368 u=marquk01 |  Using module file /Library/Python/2.7/site-packages/ansible/modules/core/utilities/logic/wait_for.py
+2017-10-25 22:02:13,907 p=16368 u=marquk01 |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.151", 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2017-10-25 22:02:13,909 p=16368 u=marquk01 |  TASK [Junos Version Before Upgrade] **************************************************************************************************************************
+2017-10-25 22:02:13,909 p=16368 u=marquk01 |  task path: /Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.yaml:23
+2017-10-25 22:02:13,937 p=16368 u=marquk01 |  The full traceback is:
+Traceback (most recent call last):
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 125, in run
+    res = self._execute()
+  File "/Library/Python/2.7/site-packages/ansible/executor/task_executor.py", line 522, in _execute
+    result = self._handler.run(task_vars=variables)
+  File "/Library/Python/2.7/site-packages/ansible/plugins/action/junos.py", line 50, in run
+    module = module_loader._load_module_source(self._task.action, module_loader.find_plugin(self._task.action))
+  File "/Library/Python/2.7/site-packages/ansible/plugins/__init__.py", line 338, in _load_module_source
+    module = imp.load_source(name, path, module_file)
+  File "/Library/Python/2.7/site-packages/ansible/modules/core/network/junos/junos_command.py", line 162, in <module>
+    from ansible.module_utils.junos import xml_to_json
+ImportError: cannot import name xml_to_json
+
+2017-10-25 22:02:13,937 p=16368 u=marquk01 |  fatal: [192.168.1.151]: FAILED! => {
+    "failed": true, 
+    "msg": "Unexpected failure during module execution.", 
+    "stdout": ""
+}
+2017-10-25 22:02:13,938 p=16368 u=marquk01 |  	to retry, use: --limit @/Users/marquk01/Desktop/ansible/playbooks/Juniper/Software_Upgrade/junos_upgrade_playbook.retry
+
+2017-10-25 22:02:13,938 p=16368 u=marquk01 |  PLAY RECAP ***************************************************************************************************************************************************
+2017-10-25 22:02:13,939 p=16368 u=marquk01 |  192.168.1.151              : ok=1    changed=0    unreachable=0    failed=1   

@@ -1,0 +1,33 @@
+---
+# =========================================================
+# Setup variables and directories
+# =========================================================
+
+- name: Creating build directories for each Device type
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - set_fact:
+        az_build_dir: "{{playbook_dir}}/{{ build_dir }}"
+        register: "build_dir"
+    - set_fact: 
+        build_dir: "{{playbook_dir}}/{{ build_dir }}/{{ inventory_hostname }}"
+        device_conf: "{{ build_dir }}/conf_{{ inventory_hostname }}.conf"
+    - name: create host build directory
+      file: path={{ build_dir }} state=directory recurse=yes mode=0755
+
+
+# =========================================================
+# Role based config template building - 
+# =========================================================
+
+- name: Build Static Route for l2vpn Template
+  hosts: junos
+  connection: local
+  gather_facts: no
+  roles:
+    - l2vpn
+  tasks:
+    - name: assembling configurations
+      assemble: src={{ build_dir }} dest={{ device_conf }} mode="0644"

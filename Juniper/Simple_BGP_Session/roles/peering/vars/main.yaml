@@ -2,22 +2,27 @@
 devices:
   as1234:
     group:
-      "v4_peers":
+      "LONAP":
         peer: 
-          "192.168.10.10":
-            description: AS-SET-PEER
-            md5: password7
-            peer_as: 1234
-          "192.168.10.11":
-            description: AS-SET-PEER
-            md5: password7
-            peer_as: 1234
-      "v6_peers":
+          "5.57.81.53":
+            description: LONAP AS-CONNETU
+            md5: $9$.f5z9CuBEyOBKWL7Vbs24oZDPfz6CtqmEy
+            peer_as: 51945
+      "LINX-Juniper":
         peer: 
-         "2001:192:168:0::1":
-           description: AS-SET-PEER
-           peer_as: 1234
-         "2001:192:168:0::2":
-           description: AS-SET-PEER
-           md5: password7
-           peer_as: 1234
+          "195.66.226.27":
+            description: LON1 AS-CONNETU
+            md5: $9$.f5z9CuBEyOBKWL7Vbs24oZDPfz6CtqmEy
+            peer_as: 51945
+      "LONAPv6":
+        peer: 
+         "2001:7f8:17::cae9:1":
+           description: LONAP AS-CONNETU
+           md5: $9$.f5z9CuBEyOBKWL7Vbs24oZDPfz6CtqmEy
+           peer_as: 51945
+      "LINXv6-Juniper":
+        peer: 
+          "2001:7f8:4::cae9:1":
+            description: LON1 AS-CONNETU
+            md5: $9$.f5z9CuBEyOBKWL7Vbs24oZDPfz6CtqmEy
+            peer_as: 51945           

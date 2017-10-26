@@ -1,0 +1,23 @@
+{% for fwfilter, fwfilter_val in devices[inventory_hostname].fwfilter.items() %}
+{% for fwterm in fwfilter_val.fwterm %}
+{% if fwterm.dest_list is defined %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from destination-prefix-list {{ fwterm.dest_list }}
+{% endif %}
+{% if fwterm.source_list is defined %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from source-prefix-list {{ fwterm.source_list }}
+{% endif %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from protocol {{ fwterm.protocol }}
+{% if fwterm.dport is defined %}
+{% for dport in fwterm.dport %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from destination-port {{ dport }}
+{% endfor %}
+{% endif %}
+{% if fwterm.sport is defined %}
+{% for sport in fwterm.sport %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from source-port {{ sport }}
+{% endfor %}
+{% endif %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} then count {{ fwfilter }}-{{ fwterm.name }}-COUNT
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} then {{ fwterm.action }}
+{% endfor %}
+{% endfor %}

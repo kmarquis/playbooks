@@ -1,0 +1,10 @@
+{% for l2vpn_name, l2vpn in devices[inventory_hostname].l2vpn.items() %}
+set routing-instances {{ l2vpn_name }} instance-type l2vpn
+set routing-instances {{ l2vpn_name }} interface {{ l2vpn.interface }}
+set routing-instances {{ l2vpn_name }} route-distinguisher {{ l2vpn.vrf_rd }}
+set routing-instances {{ l2vpn_name }} vrf-target target:{{ l2vpn.vrf_rt }}
+set routing-instances {{ l2vpn_name }} protocols l2vpn interface {{ l2vpn.interface }}
+set routing-instances {{ l2vpn_name }} protocols l2vpn encapsulation-type ethernet
+set routing-instances {{ l2vpn_name }} protocols l2vpn site {{ l2vpn.site }} site-identifier {{ l2vpn.site_id }}
+set routing-instances {{ l2vpn_name }} protocols l2vpn site {{ l2vpn.site }} interface {{ l2vpn.interface }}
+{% endfor %}

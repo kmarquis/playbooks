@@ -1,0 +1,75 @@
+---
+- hosts: bird
+  tasks:
+    - name: Install Bird
+      apt:
+        name: bird6
+        state: installed
+        update_cache: yes
+        update: yes
+
+    - name: Enable Routing on Server
+      copy:
+        src: config/sysctl.template
+        dest: /etc/sysctl.conf
+        mode: 644
+      nofity:
+          - start bird daemon
+
+  handlers:
+    - name: start bird daemon
+      service: 
+        name=bird 
+        state=started
+
+
+
+
+/*
+ *  This is an example configuration file.
+ */
+
+# Yes, even shell-like comments work...
+
+# Configure logging
+log syslog all;
+
+# Override router ID
+router id {{192.31.1.3}};
+
+# This pseudo-protocol performs synchronization between BIRD's routing
+# tables and the kernel. If your kernel supports multiple routing tables
+# (as Linux 2.2.x does), you can run multiple instances of the kernel
+# protocol and synchronize different kernel tables with different BIRD tables.
+protocol kernel {
+# learn;      # Learn all alien routes from the kernel
+  persist;    # Don't remove routes on bird shutdown
+  scan time 20;   # Scan kernel routing table every 20 seconds
+# import none;    # Default is import all
+  export all;   # Default is export none
+# kernel table 5;   # Kernel table to synchronize with (default: main)
+}
+
+# This pseudo-protocol watches all interface up/down events.
+protocol device {
+  scan time 10;   # Scan interfaces every 10 seconds
+}
+
+# Static routes (again, there can be multiple instances, so that you
+# can disable/enable various groups of static routes on the fly).
+#protocol static static_bgp {
+#   route 192.70.0.0:255.255.252.0 via 192.31.1.3;
+#   route 192.70.1.0:255.255.255.0 via 192.31.1.3;
+#   route 192.70.1.0:255.255.255.0 via 192.31.1.3;
+#   route 192.70.2.0:255.255.255.0 via 192.31.1.3;
+#   route 192.70.3.0:255.255.255.0 via 192.31.1.3;
+# }
+
+#BGP Configuration
+protocol bgp {
+        import all;
+#        export where proto = "static_bgp";
+
+        local as {{3000}};
+        neighbor {{192.31.1.2}} as {{4000}};
+}
