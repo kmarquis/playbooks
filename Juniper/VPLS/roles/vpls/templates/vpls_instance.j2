@@ -1,4 +1,16 @@
-{% for vpls_name, vpls_val in devices[inventory_hostname].vpls.items() %}
+{% for vvrp, vrrp_val in devices[inventory_hostname].vrrp.items() %}
+{% for unit, unit_val in vrrp_val.unit.items() %}
+set interfaces {{ vvrp }} unit {{ unit }} family inet address {{ unit_val.address }} vrrp-group {{ unit_val.group }} virtual-address {{ unit_val.vip }}
+set interfaces {{ vvrp }} unit {{ unit }} family inet address {{ unit_val.address }} vrrp-group {{ unit_val.group }} priority {{ unit_val.priority }}
+{% if unit_val.hold_time is defined %}
+set interfaces {{ vvrp }} unit {{ unit }} family inet address {{ unit_val.address }} vrrp-group {{ unit_val.group }} preempt hold-time {{ unit_val.hold_time }}
+{% else %}
+set interfaces {{ vvrp }} unit {{ unit }} family inet address {{ unit_val.address }} vrrp-group {{ unit_val.group }} preempt
+{% endif %}
+set interfaces {{ vvrp }} unit {{ unit }} family inet address {{ unit_val.address }} vrrp-group {{ unit_val.group }} accept-data
+{% endfor %}
+{% endfor %}
+{# {% for vpls_name, vpls_val in devices[inventory_hostname].vpls.items() %}
 set routing-instances {{ vpls_name }} instance-type vpls
 {% for interface in devices[inventory_hostname].interface %}
 set routing-instances {{ vpls_name }} interface {{ interface }}
@@ -15,4 +27,4 @@ set routing-instances {{ vpls_name }} protocols vpls no-tunnel-services
 set routing-instances {{ vpls_name }} protocols vpls site {{ vpls_site }} site-identifier {{ site.site_id }}
 set routing-instances {{ vpls_name }} protocols vpls site {{ vpls_site }} interface {{ site.interface }}
 {% endfor %}
-{% endfor %}
+{% endfor %} #}

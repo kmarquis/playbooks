@@ -1,3 +1,4 @@
+
 {% for fwfilter, fwfilter_val in devices[inventory_hostname].fwfilter.items() %}
 {% for fwterm in fwfilter_val.fwterm %}
 {% if fwterm.dest_list is defined %}
@@ -6,7 +7,9 @@ set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from desti
 {% if fwterm.source_list is defined %}
 set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from source-prefix-list {{ fwterm.source_list }}
 {% endif %}
+{% if fwterm.protocol is defined %}
 set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from protocol {{ fwterm.protocol }}
+{% endif %}
 {% if fwterm.dport is defined %}
 {% for dport in fwterm.dport %}
 set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from destination-port {{ dport }}

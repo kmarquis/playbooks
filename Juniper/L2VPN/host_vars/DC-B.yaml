@@ -1,0 +1,14 @@
+---
+devices:
+  DC-B:
+    interface:
+      'ge-0/0/0':
+        description: LINK to Site A via PE2
+        log_description: L2VPN Instance DC-B to DC-A
+    l2vpn:
+      'DC-B-to-DC-A':
+        vrf_rd: 100:0002
+        vrf_rt: 100:1001
+        site: DC-B
+        site_id: 2
+        interface: ge-0/0/0

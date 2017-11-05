@@ -1,6 +1,7 @@
 ---
 - name: Junos template building
   template:
-    src=main.j2
-    dest={{ build_dir }}/{{ inventory_hostname }}.conf
+    src: main.j2
+    dest: "{{ device_conf }}"
+  check_mode: no
 

@@ -1,0 +1,17 @@
+---
+devices:
+  switch-a:
+   vrrp:
+    'xe-0/0/0':
+      unit:
+       '100':
+         address: 10.1.0.2/29
+         group: 1
+         vip: 10.1.0.1
+         priority: 200
+         hold_time: 600
+       '200':
+         address: 10.2.0.2/29
+         group: 2
+         vip: 10.2.0.1
+         priority: 200

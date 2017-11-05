@@ -1,0 +1,36 @@
+{% for snatpool in devices[inventory_hostname].snatpool %} 
+set security nat source pool {{ snatpool.name }} address {{ snatpool.address }}
+{% endfor %}
+{% for snatruleset, snatruleset_val in devices[inventory_hostname].snatruleset.items() %}
+set security nat source rule-set {{ snatruleset }} description "{{ snatruleset_val.description }}"
+set security nat source rule-set {{ snatruleset }} from zone {{ snatruleset_val.fromzone  }}
+{% for tozone in devices[inventory_hostname].snatruleset[snatruleset].tozone %}
+set security nat source rule-set {{ snatruleset }} to zone {{ tozone }}
+{% endfor %}
+{% for snatrule in snatruleset_val.snatrule %}
+set security nat source rule-set {{ snatruleset }} rule {{ snatrule.name }} match source-address-name {{ snatrule.snatsource }}
+{% if snatrule.snatdest is defined %}
+set security nat source rule-set {{ snatruleset }} rule {{ snatrule.name }} match destination-address-name {{ snatrule.snatdest }}
+{% endif %}
+{% if snatrule.source_nat is defined %}
+set security nat source rule-set {{ snatruleset }} rule {{ snatrule.name }} then source-nat {{ snatrule.source_nat }}
+{% else %}
+set security nat source rule-set {{ snatruleset }} rule {{ snatrule.name }} then source-nat pool {{ snatrule.snatrulepool }}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% for dnatpool in devices[inventory_hostname].dnatpool %} 
+set security nat destination pool {{ dnatpool.name }} address {{ dnatpool.address }}
+set security nat destination pool {{ dnatpool.name }} address port {{ dnatpool.port }}
+{% endfor %}
+{% for dnatruleset, dnatruleset_val in devices[inventory_hostname].dnatruleset.items() %}
+{% for fromzone in dnatruleset_val.fromzone %}
+set security nat destination rule-set {{ dnatruleset }} from zone {{ fromzone }}
+{% endfor %}
+{% for dnatrule in dnatruleset_val.dnatrule %}
+set security nat destination rule-set {{ dnatruleset }} rule {{ dnatrule.name }} match destination-address {{ dnatrule.destination }}
+set security nat destination rule-set {{ dnatruleset }} rule {{ dnatrule.name }} match destination-port {{ dnatrule.port }}
+set security nat destination rule-set {{ dnatruleset }} rule {{ dnatrule.name }} match protocol {{ dnatrule.protocol }}
+set security nat destination rule-set {{ dnatruleset }} rule {{ dnatrule.name }} then destination-nat pool {{ dnatrule.name }}
+{% endfor %}
+{% endfor %}

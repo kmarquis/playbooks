@@ -1,1 +1,2 @@
-build_dir: build
+build_dir: "{{ playbook_dir }}/build"
+device_conf: "{{ build_dir }}/{{ inventory_hostname }}/{{ inventory_hostname }}.conf"

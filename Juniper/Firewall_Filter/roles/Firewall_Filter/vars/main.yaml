@@ -25,3 +25,5 @@ devices:
             dport:
               - 33434-33523
             action: accept
+          - name: REJECT
+            action: reject            

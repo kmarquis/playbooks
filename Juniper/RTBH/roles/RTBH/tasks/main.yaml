@@ -1,5 +1,0 @@
----
-- name: Building RTBH Static Route template 
-  template:
-      src: main.j2
-      dest: "{{ build_dir }}/{{ inventory_hostname }}.conf"

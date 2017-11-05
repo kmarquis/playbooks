@@ -1,0 +1,29 @@
+---
+devices:
+  srx_host:
+    snatpool:
+      - name: SNAT_POOL_1
+        address: 10.1.0.10/32
+    snatruleset:
+      'Source_NAT_Rule':
+        tozone: 
+          - untrust
+        fromzone: trust
+        description: Defualt NAT
+        snatrule:
+          - name: SNAT_HIDE
+            snatsource: TEST
+            snatrulepool: SNAT_POOL_1
+    dnatpool:
+      - name: WEBHOST
+        address: 192.168.1.135/32
+        port: 80
+    dnatruleset:
+      'Destination_NAT_Rule':
+        fromzone: 
+          - trust
+        dnatrule:
+          - name: WEBHOST
+            destination: 172.19.20.102
+            port: 80
+            protocol: tcp

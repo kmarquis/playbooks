@@ -1,0 +1,11 @@
+---
+devices:
+  firewall2:
+    ike_ipsec:
+      "PEER-VPN":
+        password: ThisIsMySuperStrongPassword
+        peer_address: 172.26.30.2
+        ext_int: ge-0/0/1
+        ike_gateway_name: VPN-TEST
+        ipsec_vpn_name: TO-VPN-TEST
+        tunnel_int: st0.0

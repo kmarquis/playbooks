@@ -1,0 +1,9 @@
+---
+devices:
+  as1234:
+    group:
+      "LINX-Juniper":
+        peer: 
+          "195.66.224.104":
+            description: LON1 AS-ASK4
+            peer_as: 41230   

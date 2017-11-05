@@ -2,5 +2,5 @@
 cli:
   host: "{{ inventory_hostname }}"
   username: ansible
-  password: Ansible
+  ssh_keyfile: /home/ansible/.ssh/id_rsa.pub
   transport: cli

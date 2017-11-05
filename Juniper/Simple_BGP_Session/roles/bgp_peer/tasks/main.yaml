@@ -1,0 +1,6 @@
+---
+- name: Building BGP template 
+  template:
+    src: main.j2
+    dest: "{{ device_conf }}"
+  check_mode: no
