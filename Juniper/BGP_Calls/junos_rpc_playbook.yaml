@@ -1,0 +1,70 @@
+---
+# =========================================================
+# Setup variables and directories
+# =========================================================
+
+- name: Creating build directories for each Device type
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: delete previous build directory
+      file:
+        state: absent
+        path: "{{ build_dir }}"
+      changed_when: no
+      check_mode: no
+    - name: create host build directory
+      file:
+        path: "{{ build_dir }}/{{ inventory_hostname }}"
+        state: directory
+        recurse: yes
+        mode: 0755
+      changed_when: no
+      check_mode: no
+    - name: create output file
+      file:
+        path: "{{ bgp_output }}"
+        state: touch
+        mode: 0755
+      changed_when: no
+      check_mode: no
+
+# =========================================================
+# RPC Call On Junos Device
+# =========================================================
+- name: RPC Call
+  hosts: junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+   - name: Checking NETCONF connectivity
+     wait_for: 
+      host: "{{ inventory_hostname }}"
+      port: 830 
+      timeout: 5
+   
+#   - name: BGP Summary RPC Call
+#     junos_rpc:
+#       rpc: get-bgp-summary-information
+#       provider: "{{ netconf }}"
+#       output: text
+#     register: bgp
+#   - debug: var=bgp.output_lines
+
+   - name: BGP Neighbor RPC Call
+     junos_rpc:
+       rpc: get-bgp-neighbor-information
+       provider: "{{ netconf }}"
+       output: json
+     register: bgp_neighbor
+#   - debug: var=bgp_neighbor.output
+
+   - name: Copy BGP RPC Call
+     copy:
+       content: "{{ bgp_neighbor.output }}"
+       dest: "{{ bgp_output }}"
+
+   - name: Run Python Script to Extract Down BGP Sessions
+     script: bgpScript.py

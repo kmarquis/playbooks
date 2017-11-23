@@ -1,0 +1,14 @@
+---
+build_dir: "{{ playbook_dir }}/build"
+bgp_output: "{{ build_dir }}/{{ inventory_hostname }}/{{ inventory_hostname }}.json"
+cli:
+  host: "{{ inventory_hostname }}"
+  username: ansible
+  ssh_keyfile: /home/ansible/.ssh/id_rsa.pub
+  transport: cli
+
+netconf:
+  host: "{{ inventory_hostname }}"
+  username: ansible
+  ssh_keyfile: /home/ansible/.ssh/id_rsa.pub
+  transport: netconf

@@ -1,0 +1,69 @@
+---
+# =========================================================
+# Setup variables and directories
+# =========================================================
+
+- name: Creating build directories for each Device type
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: delete previous build directory
+      file:
+        state: absent
+        path: "{{ build_dir }}"
+      changed_when: no
+      check_mode: no
+    - name: create host build directory
+      file:
+        path: "{{ build_dir }}/{{ inventory_hostname }}"
+        state: directory
+        recurse: yes
+        mode: 0755
+      changed_when: no
+      check_mode: no
+
+# =========================================================
+# RPC Call On Junos Device
+# =========================================================
+- name: RPC Call
+  hosts: junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+   - name: Checking NETCONF connectivity
+     wait_for: 
+      host: "{{ inventory_hostname }}"
+      port: 830 
+      timeout: 5
+   
+   - name: Show Interface Terse RPC Call
+     junos_rpc:
+       rpc: get-interface-information
+       args:
+         terse: True
+         interface-name: xe-0/0/22
+       provider: "{{ netconf }}"
+       output: text
+     register: terse
+   - debug: var=terse.output_lines
+
+   - name: BGP RPC Call
+     junos_rpc:
+       rpc: get-bgp-summary-information
+       provider: "{{ netconf }}"
+       output: text
+     register: bgp
+   - debug: var=bgp.output_lines
+
+   - name: BGP Down RPC Call
+     junos_rpc:
+       rpc: get-bgp-neighbor-information
+       provider: "{{ netconf }}"
+       output: xml
+     register: down
+     local_action:
+       copy: down
+       dest: "{{ bgp_output }}"
+   - debug: var=down.output
