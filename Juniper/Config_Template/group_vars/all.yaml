@@ -1,0 +1,51 @@
+build_dir: "{{ playbook_dir }}/build"
+device_conf: "{{ build_dir }}/{{ inventory_hostname }}/{{ inventory_hostname }}.conf"
+dev_os: junos
+syslog_hosts:
+  - 10.1.10.10
+  - 10.1.10.11
+ntp_hosts:
+  - 10.1.10.12
+  - 10.1.10.13
+  - 10.1.10.14
+mgmt_subnets:
+  - 10.1.0.0/19
+  - 192.168.0.0/16
+dns_servers:
+  - 10.1.10.15
+  - 10.1.10.16
+snmp_subnets:
+  - 10.1.10.20/30
+rootauthentication: 
+  - $1$BXLjvI1o$9RmospJibetpEpI/UxulQ/
+tacacs_hosts:
+  '10.1.10.10':
+    secret: $9$46Zi.Qz6ApBfTBEclLXUjiH5Q
+  '10.1.10.11':
+    secret: $9$jwq5FCA0IEy69yKMXbwmf5T/C
+zenoss_snmp:
+  'snmp_server':
+    auth: test
+    priv: test
+local_users:
+  'forgeops':
+    fullname: Backup User
+    uid: 2000
+    class: super-user-local
+    password: 
+  'remote':
+    fullname: TACACS User
+    uid: 2001
+    class: super-user-local
+  'ansible':
+    fullname: Ansible User
+    uid: 2003
+    class: super-user
+    ssh_rsa: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDYHBL5kOEW52cP8rfIKEQ00h4cGkjOx4/SJ5TAzRZtb7v1LmssgfukqGTthXtwbg7eSLYY625bJ894qCRnvyqnOZPZFw7XpsTyQFEOz7GGUfgILJ/Cd72/lCkWRVHd6eJpVh3nRqjooZwbiWJ0xyVFTfaaaapBuIJNaNdqCIrpyYKQWENzVXgn8stX+YoiMY2FabgISXxiXjmM+lq/JkDAPxcMD7e8EqgsBsDPrhAwKO/EoGI7rZWVeawyL7U9D9eJO5A//lyTmv0XsqViB/v6OurQhxvFPpo+MBB14jTZBspf+Cr3Numz0e9J66OGwSwaoNMZoVbHJreFxwCp5LYX ansible@vm-172-23-145-83
+logins:
+  host: "{{ inventory_hostname }}"
+  username: ansible
+  password:
+   optional_args:
+    use_keys: True
+    key_file: /home/ansible/.ssh/id_rsa.pub

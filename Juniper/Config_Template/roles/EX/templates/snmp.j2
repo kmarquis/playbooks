@@ -1,0 +1,67 @@
+
+snmp {
+    name "{{ devices[inventory_hostname].snmp.name }}";
+    location "{{ devices[inventory_hostname].snmp.location }}";
+    contact "{{ devices[inventory_hostname].snmp.contact }}";
+    v3 {
+        usm {
+            local-engine {
+{% for zenoss, zenoss_val in zenoss_snmp.items() %}
+                user {{ zenoss }} {
+                    authentication-sha {
+                        authentication-key "{{ zenoss_val.auth }}";
+                    }
+                    privacy-aes128 {
+                        privacy-key "{{ zenoss_val.priv }}"
+                    }
+                } {% endfor %} 
+            }
+        }
+        vacm {
+            security-to-group {
+                security-model usm {
+{% for vacm in zenoss_snmp %}	
+                    security-name {{ vacm }} {
+                        group view-all;
+                    } {% endfor %}
+                }
+            }
+            access {
+                group view-all {
+                    default-context-prefix {
+                        security-model usm {
+                            security-level privacy {
+                                read-view view-all;
+                                notify-view view-all;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    engine-id {
+        use-mac-address;
+    }
+    view view-all {
+        oid .1 include;
+    }
+    view all {
+        oid .1 include;
+    }
+}
+{# set snmp name "{{ devices[inventory_hostname].snmp.name }}"
+set snmp location "{{ devices[inventory_hostname].snmp.location }}"
+set snmp contact "{{ devices[inventory_hostname].snmp.contact }}"
+{% for snmpuser, snmpuser_val in devices[inventory_hostname].snmpuser.items() %}
+set snmp v3 usm local-engine user {{ snmpuser }} authentication-sha authentication-key "{{ snmpuser_val.auth }}"
+set snmp v3 usm local-engine user {{ snmpuser }} privacy-aes128 privacy-key "{{ snmpuser_val.priv }}"
+{% endfor %} 
+{% for vacm in devices[inventory_hostname].snmpuser %} 
+set snmp v3 vacm security-to-group security-model usm security-name {{ vacm }} group view-all
+{% endfor %}
+set snmp v3 vacm access group view-all default-context-prefix security-model usm security-level privacy read-view view-all
+set snmp v3 vacm access group view-all default-context-prefix security-model usm security-level privacy notify-view view-all
+set snmp engine-id use-mac-address
+set snmp view view-all oid .1 include
+set snmp view all oid .1 include #}

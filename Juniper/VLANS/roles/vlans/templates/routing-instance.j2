@@ -1,0 +1,20 @@
+
+{% if devices[inventory_hostname].routinginstance is defined %}
+{% for routinginstance, instance_val in devices[inventory_hostname].routinginstance.items() %}
+{% for interface in instance_val.interface %}
+set routing-instances {{ routinginstance }} interface {{ interface }}
+{% endfor %}
+{% if instance_val.pim is defined %}
+{% for pim_int in instance_val.pim %}
+set routing-instances {{ routinginstance }} protocols pim interface {{ pim_int }} mode sparse
+{% endfor %}
+{% endif %}
+{% for int_ospf, int_ospf_area in instance_val.ospf.items() %}
+{% if int_ospf_area.passive is defined %}
+{% for ospf_pass in int_ospf_area.passive %}
+set routing-instances {{ routinginstance }} protocols ospf area {{ int_ospf }} interface {{ ospf_pass }} passive
+{% endfor %}
+{% endif %}
+{% endfor %}
+{% endfor %}
+{% endif %}

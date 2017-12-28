@@ -1,0 +1,25 @@
+---
+devices:
+  pocswitch:
+    hostname: pocswitch
+    users:
+     'kmarquis':
+        fullname: Keeran Marquis
+        uid: 2004
+        class: super-user
+        password: $1$/y1sLXcK$96HB2SLPls6xvUII1ITQd.
+    snmp:
+      name: pocswitch
+      location: A Lab Nearby
+      contact: test@lab.local 
+    routed_port:
+      'xe-0/0/22':
+        description: "LINK to Lab Device"
+        rp_ip: 10.1.10.10/31
+    loopback:
+     'lo0':
+        unit:
+          "0":
+    static:
+      '0.0.0.0/0':
+        nexthop: 10.1.10.10

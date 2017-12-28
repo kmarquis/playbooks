@@ -1,0 +1,161 @@
+
+interfaces {
+{% if devices[inventory_hostname].routed_port is defined %}
+{% for rp_int, rp_int_val in devices[inventory_hostname].routed_port.items() %}	
+    {{ rp_int }} {
+        description "{{ rp_int_val.description }}";
+        unit 0 {
+            family inet {
+                address {{ rp_int_val.rp_ip }};
+            }
+        }
+    }
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].switch_port is defined %}
+{% for sw_int, sw_int_val in devices[inventory_hostname].switch_port.items() %}
+    {{ sw_int }} {
+        description "{{ sw_int_val.description }}";
+        unit 0 {
+            family ethernet-switching {
+                interface-mode {{ sw_int_val.int_mode }};
+                vlan {
+{% for vlan_membs in sw_int_val.vlan_members %}                	
+                    members {{ vlan_membs }};
+{% endfor %} 
+                }               
+            }
+        }
+    }
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].ae_phy is defined %}
+{% for ae_phy, ae_phy_val in devices[inventory_hostname].ae_phy.items() %}
+    {{ ae_phy }} {
+        description "{{ ae_phy_val.description }}";
+        ether-options {
+            802.3ad {{ ae_phy_val.ae }};
+        }
+    }
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].aeinterfaces is defined %}
+{% for aeinterfaces, aeint_val in devices[inventory_hostname].aeinterfaces.items() %}
+    {{ aeinterfaces }} {
+        description "{{ aeint_val.description }}";
+        aggregated-ether-options {
+            minimum-links {{ aeint_val.mini_links }};
+            lacp {
+                active;
+            }
+        }
+        unit 0 {
+{% if aeint_val.int_mode is defined %}         	
+            family ethernet-switching {           	
+                interface-mode {{ aeint_val.int_mode }};
+                vlan {
+{% for vlan_membs in aeint_val.vlan_members %}                	
+                    members [ {{ vlan_membs }} ];
+{% endfor %}
+                }
+            }
+{% elif aeint_val.fwfilter is defined %}        
+    family inet {
+{% for fwfilter, fwfil_val in aeint_val.fwfilter.items() %}    	
+        filter {
+            {{ fwfil_val.fwtype }} {{ fwfilter }};
+{% endfor %}
+        }
+        address {{ aeint_val.ae_ip }};
+{% else %}
+        address {{ aeint_val.ae_ip }};
+      }
+    }
+  }
+{% endif %}
+{% endfor %}
+{% endif %}  
+{% for loopback, loopback_val in devices[inventory_hostname].loopback.items() %}
+{% for unit, unit_val in loopback_val.unit.items() %}
+{% if unit_val.loopaddress is defined %}
+    {{ loopback }} {
+        unit {{ unit }} {
+            family inet {
+                filter {
+                    input PROTECT-RE;
+                }
+                address {{ unit_val.loopaddress }};                
+            }
+        }
+    }
+{% else %}
+    {{ loopback }} {
+        unit {{ unit }} {
+            family inet {
+                filter {
+                    input PROTECT-RE;
+                }
+            }
+        }
+    }
+{% endif %}
+{% endfor %}
+{% endfor %}
+}
+{# {% if devices[inventory_hostname].routed_port is defined %}
+{% for rp_int, rp_int_val in devices[inventory_hostname].routed_port.items() %}
+set interfaces {{ rp_int }} description "{{ rp_int_val.description }}"
+set interfaces {{ rp_int }} unit 0 family inet address {{ rp_int_val.rp_ip }}
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].switch_port is defined %}
+{% for sw_int, sw_int_val in devices[inventory_hostname].switch_port.items() %}
+set interfaces {{ sw_int }} description "{{ sw_int_val.description }}"
+set interfaces {{ sw_int }} unit 0 family ethernet-switching interface-mode {{ sw_int_val.int_mode }}
+{% for vlan_membs in sw_int_val.vlan_members %}
+set interfaces {{ sw_int }} unit 0 family ethernet-switching vlan members {{ vlan_membs }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].ae_phy is defined %}
+{% for ae_phy, ae_phy_val in devices[inventory_hostname].ae_phy.items() %}
+set interfaces {{ ae_phy }} description "{{ ae_phy_val.description }}"
+set interfaces {{ ae_phy }} ether-options 802.3ad {{ ae_phy_val.ae }}
+{% endfor %}
+{% endif %}
+{% if devices[inventory_hostname].aeinterfaces is defined %}
+{% for aeinterfaces, aeint_val in devices[inventory_hostname].aeinterfaces.items() %}
+{% if aeint_val.int_mode is defined %}
+set interfaces {{ aeinterfaces }} description "{{ aeint_val.description }}"
+set interfaces {{ aeinterfaces }} aggregated-ether-options minimum-links {{ aeint_val.mini_links }}
+set interfaces {{ aeinterfaces }} aggregated-ether-options lacp active
+set interfaces {{ aeinterfaces }} unit 0 family ethernet-switching interface-mode {{ aeint_val.int_mode }}
+{% for vlan_membs in aeint_val.vlan_members %}
+set interfaces {{ aeinterfaces }} unit 0 family ethernet-switching vlan members {{ vlan_membs }}
+{% endfor %}
+{% elif aeint_val.fwfilter is defined %}
+set interfaces {{ aeinterfaces }} description "{{ aeint_val.description }}"
+set interfaces {{ aeinterfaces }} aggregated-ether-options minimum-links {{ aeint_val.mini_links }}
+set interfaces {{ aeinterfaces }} aggregated-ether-options lacp active
+{% for fwfilter, fwfil_val in aeint_val.fwfilter.items() %}
+set interfaces {{ aeinterfaces }} unit 0 family inet {{ fwfil_val.fwtype }} {{ fwfilter }}
+{% endfor %}
+set interfaces {{ aeinterfaces }} unit 0 family inet address {{ aeint_val.ae_ip }}
+{% else %}
+set interfaces {{ aeinterfaces }} description "{{ aeint_val.description }}"
+set interfaces {{ aeinterfaces }} aggregated-ether-options minimum-links {{ aeint_val.mini_links }}
+set interfaces {{ aeinterfaces }} aggregated-ether-options lacp active
+set interfaces {{ aeinterfaces }} unit 0 family inet address {{ aeint_val.ae_ip }}
+{% endif %}
+{% endfor %}
+{% endif %}
+{% for loopback, loopback_val in devices[inventory_hostname].loopback.items() %}
+{% for unit, unit_val in loopback_val.unit.items() %}
+{% if unit_val.loopaddress is defined %}
+set interfaces {{ loopback }} unit {{ unit }} family inet filter input PROTECT-RE
+set interfaces {{ loopback }} unit {{ unit }} family inet address {{ unit_val.loopaddress }}
+{% else %}
+set interfaces {{ loopback }} unit {{ unit }} family inet filter input PROTECT-RE
+{% endif %}
+{% endfor %}
+{% endfor %} #}

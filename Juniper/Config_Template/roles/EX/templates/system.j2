@@ -1,0 +1,160 @@
+system {
+    host-name {{ devices[inventory_hostname].hostname }};
+    auto-snapshot;
+    time-zone UTC;
+    authentication-order [ tacplus password ];
+    root-authentication {
+{% for root in rootauthentication %}        
+        encrypted-password "{{ root }}";
+{% endfor %}
+    }
+    name-server {
+{% for dns in dns_servers %}	
+        {{ dns }};
+{% endfor %}
+    }
+    tacplus-server {
+{% for tacacs, tac_val in tacacs_hosts.items() %}
+        {{ tacacs }} secret "{{ tac_val.secret }}";
+{% endfor %}
+    }
+    accounting {
+        events [ login change-log interactive-commands ];
+        destination {
+            tacplus;
+        }
+    }
+    login {
+        class super-user-local {
+            idle-timeout 30;
+            permissions all;
+        }
+{% for local_user, local_user_val in local_users.items() %}
+        user {{ local_user }} {
+            full-name "{{ local_user_val.fullname }}";
+            uid {{ local_user_val.uid }}
+            class {{ local_user_val.class }};
+{% if local_user_val.password is defined %}
+            authentication {
+                encrypted-password "{{ local_user_val.password }}";
+           }
+{% elif local_user_val.ssh_rsa is defined %}
+            authentication {
+                ssh-rsa "{{ local_user_val.ssh_rsa }}";          
+           }
+{% endif %}
+        }
+{% endfor %}
+{% if devices[inventory_hostname].users is defined %}
+{% for user, user_val in devices[inventory_hostname].users.items() %}
+        user {{ user }} {
+            full-name "{{ user_val.fullname }}";
+            uid {{ user_val.uid }}
+            class {{ user_val.class }};
+{% if user_val.password is defined %}
+            authentication {
+                encrypted-password "{{ user_val.password }}";
+           }
+{% endif %}
+        }
+{% endfor %}
+{% endif %}
+        password {
+            format sha512;
+        }
+    }
+    services {
+        ssh {
+            root-login deny;
+            protocol-version v2;
+            max-sessions-per-connection 32;
+        }
+        netconf {
+            ssh;
+        }
+    }
+    syslog {
+        archive size 1m files 10;
+        user * {
+            any emergency;
+        }
+{% for host in syslog_hosts %}
+        host {{ host }} {
+            any any;
+            match "!(.*license-check.*)";
+            explicit-priority;
+        }
+{% endfor %}
+        allow-duplicates;
+        file messages {
+            any any;
+            authorization info;
+        }
+        file interactive-commands {
+            interactive-commands error;
+        }
+        file default-log-messages {
+            any info;
+            match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|GRES|(AIS_DATA_AVAILABLE)";
+            structured-data;
+        }
+    }
+    max-configurations-on-flash 10;
+    max-configuration-rollbacks 10;
+    commit synchronize;
+    ntp {
+{% for ntp in ntp_hosts %}	
+        server {{ ntp }};
+{% endfor %}
+    }
+}
+{# set system host-name {{ devices[inventory_hostname].hostname }}
+set system auto-snapshot
+set system authentication-order tacplus
+set system authentication-order password
+set system ports console log-out-on-disconnect
+set system root-authentication encrypted-password "{{ devices[inventory_hostname].system.rootauthentication }}"
+{% for dns in dns_servers %}
+set system name-server {{ dns }}
+{% endfor %}
+{% for tacacs, tac_val in devices[inventory_hostname].tacacs.items() %}
+set system tacplus-server {{ tacacs }} secret "{{ tac_val.secret }}"
+{% endfor %}
+set system accounting events login
+set system accounting events change-log
+set system accounting events interactive-commands
+set system accounting destination tacplus
+set system login class super-user-local idle-timeout 30
+set system login class super-user-local permissions all
+{% for user, user_val in devices[inventory_hostname].user.items() %}
+set system login user {{ user }} full-name "{{ user_val.fullname }}"
+set system login user {{ user }} class {{ user_val.class }}
+{% if user_val.password is defined %}
+set system login user {{ user }} authentication encrypted-password "{{ user_val.password }}"
+{% endif %}
+{% endfor %}
+set system login password minimum-length 16
+set system login password format sha512
+set system services ssh root-login deny
+set system services ssh protocol-version v2
+set system services ssh max-sessions-per-connection 32
+set system services netconf ssh
+set system syslog archive size 1m
+set system syslog archive files 10
+set system syslog user * any emergency
+{% for host in syslog_hosts %}
+set system syslog host {{ host }} any any
+set system syslog host {{ host }} match "!(.*license-check.*)"
+set system syslog host {{ host }} explicit-priority
+{% endfor %}
+set system syslog allow-duplicates
+set system syslog file messages any info
+set system syslog file messages authorization info
+set system syslog file interactive-commands interactive-commands error
+set system syslog file default-log-messages any info
+set system syslog file default-log-messages match "(requested 'commit' operation)|(copying configuration to juniper.save)|(commit complete)|ifAdminStatus|(FRU power)|(FRU removal)|(FRU insertion)|(link UP)|transitioned|Transferred|transfer-file|(license add)|(license delete)|(package -X update)|(package -X delete)|(FRU Online)|(FRU Offline)|(plugged in)|(unplugged)|GRES|(AIS_DATA_AVAILABLE)"
+set system max-configurations-on-flash 10
+set system max-configuration-rollbacks 10
+{% for ntp in ntp_hosts %} 
+set system ntp server {{ ntp }}
+{% endfor %} #}

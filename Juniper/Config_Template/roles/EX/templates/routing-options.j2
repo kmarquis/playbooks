@@ -1,0 +1,13 @@
+
+routing-options {
+    static {
+{% for static, static_val in devices[inventory_hostname].static.items() %} 
+        route {{ static }} {
+            next-hop {{ static_val.nexthop }};
+        }
+{% endfor %}
+    }
+}
+{# {% for static, static_val in devices[inventory_hostname].static.items() %} 
+set routing-options static route {{ static }} next-hop {{ static_val.nexthop }}
+{% endfor %} #}

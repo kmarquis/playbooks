@@ -1,0 +1,25 @@
+
+{% if devices[inventory_hostname].irbint is defined %}
+{% for irbint, irb_val in devices[inventory_hostname].irbint.items() %}
+    irb {
+        unit {{ irbint }} {
+            description "{{ irb_val.description }}"";
+            family inet {
+{% if irb_val.filter is defined %}            	
+               filter {
+                    input {{ filter }}
+{% endif %}                                	
+                address {{ irb_val.prefix|ipaddr(-2) }};
+            }
+        }
+{% endfor %}
+{% endif %}
+{# {% if devices[inventory_hostname].irbint is defined %}
+{% for irbint, irb_val in devices[inventory_hostname].irbint.items() %}
+set interfaces irb unit {{ irbint }} description "{{ irb_val.description }}"
+{% if irb_val.filter is defined %}
+set interfaces irb unit {{ irbint }} family inet filter output {{ filter }}
+{% endif %}
+set interfaces irb unit {{ irbint }} family inet address {{ irb_val.prefix|ipaddr(-2) }}
+{% endfor %}
+{% endif %} #}

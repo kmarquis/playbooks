@@ -1,4 +1,6 @@
+# file:
 [all:vars]
 
 [junos]
-switch1
+pocswitch
+

@@ -1,5 +1,5 @@
 ---
-- name: Building Switchport template 
+- name: Junos template building
   template:
     src: main.j2
     dest: "{{ device_conf }}"

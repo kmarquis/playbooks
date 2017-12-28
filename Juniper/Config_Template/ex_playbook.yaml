@@ -1,0 +1,54 @@
+---
+# =========================================================
+# Setup variables and directories
+# =========================================================
+
+- name: Creating build directories for each Device type
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: delete previous build directory
+      file:
+        state: absent
+        path: "{{ build_dir }}"
+      changed_when: no
+      check_mode: no
+    - name: create host build directory
+      file:
+        path: "{{ build_dir }}/{{ inventory_hostname }}"
+        state: directory
+        recurse: yes
+        mode: 0755
+      changed_when: no
+      check_mode: no
+
+# =========================================================
+# Role based config template building
+# =========================================================
+
+- name: Template build for Internet Only Facing Switches
+  hosts: junos
+  connection: local
+  gather_facts: no
+  roles:
+    - EX
+
+# =========================================================
+# Napalm Config device push
+# =========================================================
+
+- name: NAPALM Push on Junos
+  hosts: junos
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: "Configuration Deployment"
+      napalm_install_config:
+        provider: "{{ logins }}"
+        dev_os: "{{ dev_os }}"
+        config_file: "{{ device_conf }}"
+        commit_changes: "{{ not ansible_check_mode }}"
+        replace_config: true
+        get_diffs: true
+        diff_file: "{{ build_dir }}/{{ inventory_hostname }}/{{ inventory_hostname }}.diff"

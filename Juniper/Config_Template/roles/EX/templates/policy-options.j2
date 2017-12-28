@@ -1,0 +1,59 @@
+
+policy-options {
+    prefix-list SSH-ADDRESSES {
+{% for tooling in mgmt_subnets %}
+        {{ tooling }};
+{% endfor %}
+    }
+    prefix-list DNS-ADDRESSES {
+{% for dns in dns_servers %}
+        {{ dns }};
+{% endfor %}
+    }
+    prefix-list NTP-SERVER-ADDRESSES {
+{% for ntp in ntp_hosts %} 
+        {{ ntp }};
+{% endfor %}
+    }
+    prefix-list TACACS-ADDRESSES {
+{% for tacacs in tacacs_hosts %}
+        {{ tacacs }};
+{% endfor %}
+    }
+    prefix-list SNMP-ADDRESSES {
+{% for snmp in snmp_subnets %}
+        {{ snmp }};
+{% endfor %}
+    }
+{% if devices[inventory_hostname].prefixlist is defined %}
+{% for prefixlist, prefix_val in devices[inventory_hostname].prefixlist.items() %}
+    prefix-list {{ prefixlist }} {
+{% for subnets in prefix_val %}
+        {{ subnets }};
+{% endfor %}
+    }
+{% endfor %}
+{% endif %}
+}
+{# {% for ntp in ntp_hosts %} 
+set policy-options prefix-list NTP-ADDRESSES {{ ntp }}
+{% endfor %}
+{% for tooling in mgmt_subnets %} 
+set policy-options prefix-list SSH-ADDRESSES {{ tooling }}
+{% endfor %}
+{% for dns in dns_servers %}
+set policy-options prefix-list DNS-ADDRESSES {{ dns }}
+{% endfor %}
+{% for tacacs in devices[inventory_hostname].tacacs %}
+set policy-options prefix-list TACACS-ADDRESSES {{ tacacs }}
+{% endfor %}
+{% for snmp in snmp_subnets %}
+set policy-options prefix-list SNMP-ADDRESSES {{ snmp }}
+{% endfor %}
+{% if devices[inventory_hostname].prefixlist is defined %}
+{% for prefixlist, prefix_val in devices[inventory_hostname].prefixlist.items() %}
+{% for subnets in prefix_val %}
+set policy-options prefix-list {{ prefixlist }} {{ subnets }}
+{% endfor %}
+{% endfor %}
+{% endif %} #}

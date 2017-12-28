@@ -1,0 +1,307 @@
+
+firewall {
+    family inet {
+        filter PROTECT-RE {
+            term SSH {
+                from {
+                    source-prefix-list {
+                        SSH-ADDRESSES;
+                    }
+                    protocol tcp;
+                    destination-port ssh;
+                }
+                then {
+                    count SSH;
+                    accept;
+                }
+            }
+            term DNS {
+                from {
+                    source-prefix-list {
+                        DNS-ADDRESSES;
+                    }
+                    protocol udp;
+                    source-port domain;
+                }
+                then {
+                    policer DNS-POLICER;
+                    accept;
+                }
+            }
+            term NTP-SERVERS {
+                from {
+                    source-prefix-list {
+                        NTP-SERVER-ADDRESSES;
+                    }
+                    protocol udp;
+                    source-port ntp;
+                    destination-port ntp;
+                }
+                then {
+                    policer NTP-POLICER;
+                    count NTP-SERVERS;
+                    accept;
+                }
+            }
+            term TACACS {
+                from {
+                    source-prefix-list {
+                        TACACS-ADDRESSES;
+                    }
+                    protocol [ tcp udp ];
+                    source-port tacacs;
+                }
+                then {
+                    policer TACACS-POLICER;
+                    accept;
+                }
+            }
+            term SNMP {
+                from {
+                    source-prefix-list {
+                        SNMP-ADDRESSES;
+                    }
+                    protocol udp;
+                    destination-port snmp;
+                }
+                then {
+                    policer SNMP-POLICER;
+                    count SNMP;
+                    accept;
+                }
+            }
+            term ICMP {
+                from {
+                    protocol icmp;
+                    icmp-type [ echo-request echo-reply unreachable time-exceeded ];
+                }
+                then {
+                    policer SMALL-BW-POLICER;
+                    count ICMP-TRAFFIC;
+                    accept;
+                }
+            }
+            term TRACEROUTE {
+                from {
+                    protocol udp;
+                    destination-port 33434-33523;
+                }
+                then {
+                    policer SMALL-BW-POLICER;
+                    count TRACEROUTE-TRAFFIC;
+                    accept;
+                }
+            }
+            term TCP-ESTABLISHED {
+                from {
+                    protocol tcp;
+                    tcp-established;
+                }
+                then {
+                    policer TCP-CONNECTION-POLICER;
+                    count TCP-ESTABLISHED;
+                    accept;
+                }
+            }
+            term Discard-Everything-Else {
+                then {
+                    count Discard-Everything-Else;
+                    discard;
+                }
+            }
+        }
+{% if devices[inventory_hostname].fwfilter is defined %}
+{% for fwfilter, fwfilter_val in devices[inventory_hostname].fwfilter.items() %}
+        filter {{ fwfilter }} {
+{% for fwterm in fwfilter_val.fwterm %}
+            term {{ fwterm.name }} {
+                from {
+{% if fwterm.dest_list is defined %}                	
+                	destination-prefix-list {{ fwterm.dest_list }};
+{% endif %}
+{% if fwterm.source_list is defined %}
+                    source-prefix-list {{ fwterm.source_list }};
+{% endif %}
+                    protocol {{ fwterm.protocol }};
+{% if fwterm.sport is defined %}
+{% for sport in fwterm.sport %}
+                    source-port {{ sport }};
+{% endfor %}
+{% endif %}
+{% if fwterm.dport is defined %}
+{% for dport in fwterm.dport %}
+                    destination-port {{ dport }};
+{% endfor %}
+{% endif %}
+                }
+                then {
+                    count {{ fwfilter }}-{{ fwterm.name }}-COUNT;
+                    {{ fwterm.action }};
+                }
+{% endfor %}
+{% endfor %}
+{% endif %}
+       }    
+    policer DNS-POLICER {
+        if-exceeding {
+            bandwidth-limit 512k;
+            burst-size-limit 16k;
+        }
+        then discard;
+    }
+    policer NTP-POLICER {
+        if-exceeding {
+            bandwidth-limit 256k;
+            burst-size-limit 16k;
+        }
+        then discard;
+    }
+    policer SMALL-BW-POLICER {
+        if-exceeding {
+            bandwidth-limit 50m;
+            burst-size-limit 150k;
+        }
+        then discard;
+    }
+    policer SNMP-POLICER {
+        if-exceeding {
+            bandwidth-limit 10m;
+            burst-size-limit 100k;
+        }
+        then discard;
+    }
+    policer SSH-POLICER {
+        if-exceeding {
+            bandwidth-limit 25m;
+            burst-size-limit 128k;
+        }
+        then discard;
+    }
+    policer TCP-CONNECTION-POLICER {
+        if-exceeding {
+            bandwidth-limit 20m;
+            burst-size-limit 200k;
+        }
+        then discard;
+    }
+    policer TACACS-POLICER {
+        if-exceeding {
+            bandwidth-limit 5m;
+            burst-size-limit 16k;
+        }
+        then discard;
+    }
+{% if devices[inventory_hostname].fwpolicer is defined %}
+{% for fwpolicer, policer in devices[inventory_hostname].fwpolicer.items() %}
+    policer {{ fwpolicer }} {
+        if-exceeding {
+            bandwidth-limit {{ policer.bandwidthlimit }};
+            burst-size-limit {{ policer.burstlimit }};
+        }
+        then {{ policer.action }};
+    }
+{% endfor %}
+{% endif %}
+}
+{# set firewall family inet filter PROTECT-RE term SSH from source-prefix-list SSH-ADDRESSES
+set firewall family inet filter PROTECT-RE term SSH from protocol tcp
+set firewall family inet filter PROTECT-RE term SSH from destination-port ssh
+set firewall family inet filter PROTECT-RE term SSH then count SSH
+set firewall family inet filter PROTECT-RE term SSH then accept
+set firewall family inet filter PROTECT-RE term DNS from source-prefix-list DNS-ADDRESSES
+set firewall family inet filter PROTECT-RE term DNS from protocol udp
+set firewall family inet filter PROTECT-RE term DNS from source-port domain
+set firewall family inet filter PROTECT-RE term DNS then policer DNS-POLICER
+set firewall family inet filter PROTECT-RE term DNS then accept
+set firewall family inet filter PROTECT-RE term NTP-SERVERS from source-prefix-list NTP-SERVER-ADDRESSES
+set firewall family inet filter PROTECT-RE term NTP-SERVERS from protocol udp
+set firewall family inet filter PROTECT-RE term NTP-SERVERS from source-port ntp
+set firewall family inet filter PROTECT-RE term NTP-SERVERS from destination-port ntp
+set firewall family inet filter PROTECT-RE term NTP-SERVERS then policer NTP-POLICER
+set firewall family inet filter PROTECT-RE term NTP-SERVERS then count NTP-SERVERS
+set firewall family inet filter PROTECT-RE term NTP-SERVERS then accept
+set firewall family inet filter PROTECT-RE term TACACS from source-prefix-list TACACS-ADDRESSES
+set firewall family inet filter PROTECT-RE term TACACS from protocol tcp
+set firewall family inet filter PROTECT-RE term TACACS from protocol udp
+set firewall family inet filter PROTECT-RE term TACACS from source-port tacacs
+set firewall family inet filter PROTECT-RE term TACACS then policer TACACS-POLICER
+set firewall family inet filter PROTECT-RE term TACACS then accept
+set firewall family inet filter PROTECT-RE term SNMP from source-prefix-list SNMP-ADDRESSES
+set firewall family inet filter PROTECT-RE term SNMP from protocol udp
+set firewall family inet filter PROTECT-RE term SNMP from destination-port snmp
+set firewall family inet filter PROTECT-RE term SNMP then policer SNMP-POLICER
+set firewall family inet filter PROTECT-RE term SNMP then count SNMP
+set firewall family inet filter PROTECT-RE term SNMP then accept
+set firewall family inet filter PROTECT-RE term ICMP from protocol icmp
+set firewall family inet filter PROTECT-RE term ICMP from icmp-type echo-request
+set firewall family inet filter PROTECT-RE term ICMP from icmp-type echo-reply
+set firewall family inet filter PROTECT-RE term ICMP from icmp-type unreachable
+set firewall family inet filter PROTECT-RE term ICMP from icmp-type time-exceeded
+set firewall family inet filter PROTECT-RE term ICMP then policer SMALL-BW-POLICER
+set firewall family inet filter PROTECT-RE term ICMP then count ICMP-TRAFFIC
+set firewall family inet filter PROTECT-RE term ICMP then accept
+set firewall family inet filter PROTECT-RE term TRACEROUTE from protocol udp
+set firewall family inet filter PROTECT-RE term TRACEROUTE from destination-port 33434-33523
+set firewall family inet filter PROTECT-RE term TRACEROUTE then policer SMALL-BW-POLICER
+set firewall family inet filter PROTECT-RE term TRACEROUTE then count TRACEROUTE-TRAFFIC
+set firewall family inet filter PROTECT-RE term TRACEROUTE then accept
+set firewall family inet filter PROTECT-RE term TCP-ESTABLISHED from protocol tcp
+set firewall family inet filter PROTECT-RE term TCP-ESTABLISHED from tcp-established
+set firewall family inet filter PROTECT-RE term TCP-ESTABLISHED then policer TCP-CONNECTION-POLICER
+set firewall family inet filter PROTECT-RE term TCP-ESTABLISHED then count TCP-ESTABLISHED
+set firewall family inet filter PROTECT-RE term TCP-ESTABLISHED then accept
+set firewall family inet filter PROTECT-RE term Discard-Everything-Else then count Discard-Everything-Else
+set firewall family inet filter PROTECT-RE term Discard-Everything-Else then discard
+{% if devices[inventory_hostname].fwfilter is defined %}
+{% for fwfilter, fwfilter_val in devices[inventory_hostname].fwfilter.items() %}
+{% for fwterm in fwfilter_val.fwterm %}
+{% if fwterm.dest_list is defined %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from destination-prefix-list {{ fwterm.dest_list }}
+{% endif %}
+{% if fwterm.source_list is defined %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from source-prefix-list {{ fwterm.source_list }}
+{% endif %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from protocol {{ fwterm.protocol }}
+{% if fwterm.dport is defined %}
+{% for dport in fwterm.dport %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from destination-port {{ dport }}
+{% endfor %}
+{% endif %}
+{% if fwterm.sport is defined %}
+{% for sport in fwterm.sport %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} from source-port {{ sport }}
+{% endfor %}
+{% endif %}
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} then count {{ fwfilter }}-{{ fwterm.name }}-COUNT
+set firewall family inet filter {{ fwfilter }} term {{ fwterm.name }} then {{ fwterm.action }}
+{% endfor %}
+{% endfor %}
+{% endif %}
+set firewall policer DNS-POLICER if-exceeding bandwidth-limit 512k
+set firewall policer DNS-POLICER if-exceeding burst-size-limit 16k
+set firewall policer DNS-POLICER then discard
+set firewall policer NTP-POLICER if-exceeding bandwidth-limit 256k
+set firewall policer NTP-POLICER if-exceeding burst-size-limit 16k
+set firewall policer NTP-POLICER then discard
+set firewall policer SMALL-BW-POLICER if-exceeding bandwidth-limit 50m
+set firewall policer SMALL-BW-POLICER if-exceeding burst-size-limit 150k
+set firewall policer SMALL-BW-POLICER then discard
+set firewall policer SNMP-POLICER if-exceeding bandwidth-limit 10m
+set firewall policer SNMP-POLICER if-exceeding burst-size-limit 100k
+set firewall policer SNMP-POLICER then discard
+set firewall policer SSH-POLICER if-exceeding bandwidth-limit 25m
+set firewall policer SSH-POLICER if-exceeding burst-size-limit 128k
+set firewall policer SSH-POLICER then discard
+set firewall policer TCP-CONNECTION-POLICER if-exceeding bandwidth-limit 20m
+set firewall policer TCP-CONNECTION-POLICER if-exceeding burst-size-limit 200k
+set firewall policer TCP-CONNECTION-POLICER then discard
+set firewall policer TACACS-POLICER if-exceeding bandwidth-limit 5m
+set firewall policer TACACS-POLICER if-exceeding burst-size-limit 16k
+set firewall policer TACACS-POLICER then discard
+{% if devices[inventory_hostname].fwpolicer is defined %}
+{% for fwpolicer, policer in devices[inventory_hostname].fwpolicer.items() %}
+set firewall policer {{ fwpolicer }} if-exceeding bandwidth-limit {{ policer.bandwidthlimit }}
+set firewall policer {{ fwpolicer }} if-exceeding burst-size-limit {{ policer.burstlimit }}
+set firewall policer {{ fwpolicer }} then {{ policer.action }}
+{% endfor %}
+{% endif %} #}

@@ -1,0 +1,10 @@
+
+{% if devices[inventory_hostname].irbinf is defined %}
+{% for irbinf, irb_val in devices[inventory_hostname].irbinf.items() %}
+set interfaces irb unit {{ irbinf }} description "{{ irb_val.description }}"
+{% if irb_val.filter is defined %}
+set interfaces irb unit {{ irbinf }} family inet filter output {{ irb_val.filter }}
+{% endif %}
+set interfaces irb unit {{ irbinf }} family inet address {{ irb_val.prefix|ipaddr(-2) }}
+{% endfor %}
+{% endif %}

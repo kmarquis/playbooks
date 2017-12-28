@@ -28,9 +28,9 @@
 # Role based config template building - 
 # =========================================================
 
-- name: Build New Switchport Template
+- name: Building VLANs and Switchport templates on Junos Switch
   hosts: junos
   connection: local
   gather_facts: no
   roles:
-    - switchport
+    - vlans

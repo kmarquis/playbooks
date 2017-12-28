@@ -1,9 +1,0 @@
-{% for interface, int_val in devices[inventory_hostname].interface.items() %}
-delete interface {{ interface }}
-set interfaces {{ interface }} description "{{ int_val.description }}"
-set interfaces {{ interface }} enable
-set interfaces {{ interface }} unit 0 family ethernet-switching interface-mode {{ int_val.port_mode }}
-{% for vlans in int_val.vlans %}
-set interfaces {{ interface }} unit 0 family ethernet-switching vlan members {{ vlans }}
-{% endfor %}
-{% endfor %}

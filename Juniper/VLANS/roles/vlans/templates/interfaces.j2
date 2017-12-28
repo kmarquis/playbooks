@@ -1,0 +1,20 @@
+
+{% for interface, int_val in devices[inventory_hostname].interface.items() %}
+{% if int_val.port_mode == 'trunk' %}
+set interfaces {{ interface }} unit 0 family ethernet-switching interface-mode {{ int_val.port_mode }}
+{% for vlans in int_val.vlan_members %}
+set interfaces {{ interface }} unit 0 family ethernet-switching vlan members {{ vlans }}
+{% endfor %}
+{% else %}
+delete interface {{ interface }}
+set interfaces {{ interface }} description "{{ int_val.description }}"
+set interfaces {{ interface }} enable
+set interfaces {{ interface }} unit 0 family ethernet-switching interface-mode {{ int_val.port_mode }}
+{% if int_val.qos_filter is defined %}
+set interfaces {{ interface }} unit 0 family ethernet-switching filter input {{ int_val.qos_filter }}
+{% endif %}
+{% for vlans in int_val.vlan_members %}
+set interfaces {{ interface }} unit 0 family ethernet-switching vlan members {{ vlans }}
+{% endfor %}
+{% endif %}
+{% endfor %}

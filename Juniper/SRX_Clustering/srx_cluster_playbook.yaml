@@ -1,0 +1,68 @@
+---
+# =========================================================
+# Enabling SRX Clustering on Standalone Devices
+# =========================================================
+- name: Enabling SRX Clustering
+  hosts: junos
+  connection: local
+  roles:
+    - Juniper.junos
+  gather_facts: no
+
+  # vars:
+  #   wait_time: 600
+  #   pkg_dir: /Users/kmarquis/Desktop/JunosVersion
+  #   OS_version: 12.1X46-D65.4
+  #   OS_package: junos-srxsme-12.1X46-D65.4-domestic.tgz
+
+  tasks:
+   - name: Create SRX Cluster
+     junos_srx_cluster:
+       host: "{{ inventory_hostname }}"
+       user: root
+       passwd: lab123
+       mode: "telnet"
+       console: "--port={{ console_port_number }}"
+       cluster_enable: true
+       node: "{{ node_id }}"
+       logfile: cluster.log
+ 
+
+   # - name: Checking NETCONF connectivity
+   #   wait_for: 
+   #    host: "{{ inventory_hostname }}"
+   #    port: 830 
+   #    timeout: 5
+   
+   # - name: Junos Version Before Upgrade
+   #   junos_command:
+   #     commands:
+   #      - show version
+   #     provider: "{{ cli }}"
+   #   register: version
+   # - debug: var=version.stdout_lines
+
+   # - name: Install Junos OS package
+   #   junos_package:
+   #     provider: "{{ cli }}"
+   #     src: "{{ pkg_dir }}/{{ OS_package }}"    
+   #     reboot: "{{ not ansible_check_mode }}"
+   #   register: upgrade
+   #   check_mode: no     
+   #   when: not version == OS_version
+   # - debug: var=upgrade
+
+   # - name: Test Connectivity after Upgrade
+   #   wait_for: 
+   #     host: "{{ inventory_hostname }}"
+   #     delay: 70
+   #     port: 830 
+   #     timeout: "{{ wait_time }}"
+
+   # - name: Junos Version After Upgrade
+   #   junos_command:
+   #     commands:
+   #      - show version
+   #     provider: "{{ cli }}"
+   #   register: version
+   # - debug: var=version.stdout_lines
