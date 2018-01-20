@@ -1,0 +1,799 @@
+2018-01-20 10:50:50,992 p=6414 u=kmarquis |  ansible-playbook 2.4.2.0
+  config file = /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/ansible.cfg
+  configured module search path = [u'/Users/kmarquis/.ansible/plugins/modules', u'/usr/share/ansible/plugins/modules']
+  ansible python module location = /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible
+  executable location = /Library/Frameworks/Python.framework/Versions/2.7/bin/ansible-playbook
+  python version = 2.7.9 (v2.7.9:648dcafa7e5f, Dec 10 2014, 10:10:46) [GCC 4.2.1 (Apple Inc. build 5666) (dot 3)]
+2018-01-20 10:50:50,993 p=6414 u=kmarquis |  Using /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/ansible.cfg as config file
+2018-01-20 10:50:50,995 p=6414 u=kmarquis |  setting up inventory plugins
+2018-01-20 10:50:51,006 p=6414 u=kmarquis |  Parsed /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/inventories/hosts inventory source with ini plugin
+2018-01-20 10:50:51,231 p=6414 u=kmarquis |  Loading callback plugin default of type stdout, v2.0 from /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/plugins/callback/__init__.pyc
+2018-01-20 10:50:51,492 p=6414 u=kmarquis |  PLAYBOOK: jtac_rsi_playbook.yaml **************************************************************************************************************************************************
+2018-01-20 10:50:51,493 p=6414 u=kmarquis |  2 plays in jtac_rsi_playbook.yaml
+2018-01-20 10:50:51,520 p=6414 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 10:50:51,526 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:50:51,537 p=6414 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 10:50:51,537 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:11
+2018-01-20 10:50:51,767 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/files/file.py
+2018-01-20 10:50:52,006 p=6414 u=kmarquis |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "diff": {
+        "after": {
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "state": "absent"
+        }, 
+        "before": {
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "state": "directory"
+        }
+    }, 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "diff_peek": null, 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": null, 
+            "original_basename": null, 
+            "owner": null, 
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "absent", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+    "state": "absent"
+}
+2018-01-20 10:50:52,012 p=6414 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 10:50:52,012 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:17
+2018-01-20 10:50:52,049 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/files/file.py
+2018-01-20 10:50:52,370 p=6414 u=kmarquis |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "diff": {
+        "after": {
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "state": "directory"
+        }, 
+        "before": {
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "state": "absent"
+        }
+    }, 
+    "gid": 20, 
+    "group": "staff", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "diff_peek": null, 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": 493, 
+            "original_basename": null, 
+            "owner": null, 
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+            "recurse": true, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "directory", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "mode": "0755", 
+    "owner": "kmarquis", 
+    "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151", 
+    "size": 68, 
+    "state": "directory", 
+    "uid": 501
+}
+2018-01-20 10:50:52,375 p=6414 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 10:50:52,376 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:25
+2018-01-20 10:50:52,423 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/files/file.py
+2018-01-20 10:50:52,700 p=6414 u=kmarquis |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "dest": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1050.txt", 
+    "diff": {
+        "after": {
+            "mode": "0755", 
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1050.txt", 
+            "state": "touch"
+        }, 
+        "before": {
+            "mode": "0644", 
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1050.txt", 
+            "state": "absent"
+        }
+    }, 
+    "gid": 20, 
+    "group": "staff", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": null, 
+            "content": null, 
+            "delimiter": null, 
+            "diff_peek": null, 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": false, 
+            "group": null, 
+            "mode": 493, 
+            "original_basename": null, 
+            "owner": null, 
+            "path": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1050.txt", 
+            "recurse": false, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": null, 
+            "state": "touch", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "mode": "0755", 
+    "owner": "kmarquis", 
+    "size": 0, 
+    "state": "file", 
+    "uid": 501
+}
+2018-01-20 10:50:52,700 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:50:52,701 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:50:52,708 p=6414 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 10:50:52,711 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:50:52,715 p=6414 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 10:50:52,715 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:42
+2018-01-20 10:50:52,888 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/utilities/logic/wait_for.py
+2018-01-20 10:50:53,161 p=6414 u=kmarquis |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "elapsed": 0, 
+    "invocation": {
+        "module_args": {
+            "active_connection_states": [
+                "ESTABLISHED", 
+                "FIN_WAIT1", 
+                "FIN_WAIT2", 
+                "SYN_RECV", 
+                "SYN_SENT", 
+                "TIME_WAIT"
+            ], 
+            "connect_timeout": 5, 
+            "delay": 0, 
+            "exclude_hosts": null, 
+            "host": "192.168.1.151", 
+            "msg": null, 
+            "path": null, 
+            "port": 830, 
+            "search_regex": null, 
+            "sleep": 1, 
+            "state": "started", 
+            "timeout": 5
+        }
+    }, 
+    "path": null, 
+    "port": 830, 
+    "search_regex": null, 
+    "state": "started"
+}
+2018-01-20 10:50:53,166 p=6414 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 10:50:53,166 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:48
+2018-01-20 10:50:54,284 p=6490 u=kmarquis |  creating new control socket for host 192.168.1.151:830 as user kmarquis
+2018-01-20 10:50:54,285 p=6490 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/71452d3405
+2018-01-20 10:50:54,285 p=6490 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 10:50:54,285 p=6490 u=kmarquis |  using connection plugin netconf
+2018-01-20 10:50:54,367 p=6490 u=kmarquis |  network_os is set to junos
+2018-01-20 10:50:54,393 p=6490 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 10:50:54,619 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 10:50:54,938 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 10:50:59,307 ncclient.transport.session initialized: session-id=3311 | server_capabilities=<dictionary-keyiterator object at 0x104ff0730>
+2018-01-20 10:50:59,329 p=6490 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 10:50:59,373 p=6490 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 10:50:59,374 p=6490 u=kmarquis |  connection established to 192.168.1.151 in 0:00:05.088270
+2018-01-20 10:50:59,374 p=6490 u=kmarquis |  local socket is set to listening
+2018-01-20 10:51:00,305 p=6490 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:51:00,305 p=6490 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 10:51:00,306 p=6490 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:51:00,306 p=6490 u=kmarquis |  socket operation is RUN
+2018-01-20 10:51:00,306 p=6490 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:51:01,254 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/network/junos/junos_command.py
+2018-01-20 10:51:03,027 p=6490 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:51:03,028 p=6490 u=kmarquis |  socket operation is EXEC
+2018-01-20 10:51:03,029 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 10:51:04,141 p=6490 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:51:04,256 p=6414 u=kmarquis |  ok: [192.168.1.151] => {
+    "changed": false, 
+    "invocation": {
+        "module_args": {
+            "commands": [
+                "show version"
+            ], 
+            "display": "text", 
+            "host": null, 
+            "interval": 1, 
+            "match": "all", 
+            "password": null, 
+            "port": null, 
+            "provider": {
+                "host": "192.168.1.151", 
+                "password": "VALUE_SPECIFIED_IN_NO_LOG_PARAMETER", 
+                "port": null, 
+                "ssh_keyfile": null, 
+                "timeout": null, 
+                "transport": "netconf", 
+                "username": "kmarquis"
+            }, 
+            "retries": 10, 
+            "rpcs": null, 
+            "ssh_keyfile": null, 
+            "timeout": null, 
+            "transport": null, 
+            "username": null, 
+            "wait_for": null
+        }
+    }, 
+    "stdout": [
+        "Model: srx110h-va\nJUNOS Software Release [12.1X46-D67]"
+    ], 
+    "stdout_lines": [
+        [
+            "Model: srx110h-va", 
+            "JUNOS Software Release [12.1X46-D67]"
+        ]
+    ]
+}
+2018-01-20 10:51:04,280 p=6414 u=kmarquis |  TASK [Copy RSI Details to Local File] *********************************************************************************************************************************************
+2018-01-20 10:51:04,281 p=6414 u=kmarquis |  task path: /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml:56
+2018-01-20 10:51:04,584 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/files/stat.py
+2018-01-20 10:51:04,962 p=6414 u=kmarquis |  Using module file /Library/Frameworks/Python.framework/Versions/2.7/lib/python2.7/site-packages/ansible/modules/files/copy.py
+2018-01-20 10:51:05,140 p=6414 u=kmarquis |  changed: [192.168.1.151] => {
+    "changed": true, 
+    "checksum": "ae0f9d5f778786779fd91a5142e547df843e6591", 
+    "dest": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1051.txt", 
+    "diff": [], 
+    "gid": 20, 
+    "group": "staff", 
+    "invocation": {
+        "module_args": {
+            "attributes": null, 
+            "backup": false, 
+            "content": null, 
+            "delimiter": null, 
+            "dest": "/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/rsi/192.168.1.151/RSI-192.168.1.151-20012018-1051.txt", 
+            "directory_mode": null, 
+            "follow": false, 
+            "force": true, 
+            "group": null, 
+            "local_follow": null, 
+            "mode": null, 
+            "original_basename": "tmp0A1wwV", 
+            "owner": null, 
+            "regexp": null, 
+            "remote_src": null, 
+            "selevel": null, 
+            "serole": null, 
+            "setype": null, 
+            "seuser": null, 
+            "src": "/Users/kmarquis/.ansible/tmp/ansible-tmp-1516445464.37-219684313561180/source", 
+            "unsafe_writes": null, 
+            "validate": null
+        }
+    }, 
+    "md5sum": "1395d44eb7a3a6d5cb554b33e720e6a8", 
+    "mode": "0644", 
+    "owner": "kmarquis", 
+    "size": 11, 
+    "src": "/Users/kmarquis/.ansible/tmp/ansible-tmp-1516445464.37-219684313561180/source", 
+    "state": "file", 
+    "uid": 501
+}
+2018-01-20 10:51:05,141 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:51:05,142 p=6414 u=kmarquis |  META: ran handlers
+2018-01-20 10:51:05,143 p=6414 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 10:51:05,143 p=6414 u=kmarquis |  192.168.1.151              : ok=6    changed=1    unreachable=0    failed=0   
+2018-01-20 10:51:34,142 p=6490 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 10:51:34,142 p=6490 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:51:34,142 p=6490 u=kmarquis |  closing local listener
+2018-01-20 10:51:34,143 p=6490 u=kmarquis |  closing the connection
+2018-01-20 10:51:34,143 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 10:51:34,261 p=6490 u=kmarquis |  removing the local control socket
+2018-01-20 10:51:34,261 p=6490 u=kmarquis |  shutdown complete
+2018-01-20 10:51:34,261 p=6490 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:51:34,262 p=6490 u=kmarquis |  persistent connection is not active
+2018-01-20 10:51:34,262 p=6490 u=kmarquis |  shutdown local socket, connection was active for 0:00:39.976456 secs
+2018-01-20 10:54:49,445 p=6551 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 10:54:49,520 p=6551 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 10:54:50,016 p=6551 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:54:50,024 p=6551 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 10:54:50,365 p=6551 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:54:50,370 p=6551 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 10:54:50,654 p=6551 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:54:50,663 p=6551 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 10:54:50,669 p=6551 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 10:54:51,066 p=6551 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:54:51,071 p=6551 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 10:54:52,274 p=6627 u=kmarquis |  creating new control socket for host 192.168.1.151:830 as user kmarquis
+2018-01-20 10:54:52,274 p=6627 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/71452d3405
+2018-01-20 10:54:52,275 p=6627 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 10:54:52,275 p=6627 u=kmarquis |  using connection plugin netconf
+2018-01-20 10:54:52,359 p=6627 u=kmarquis |  network_os is set to junos
+2018-01-20 10:54:52,375 p=6627 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 10:54:52,584 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 10:54:52,895 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 10:54:57,052 ncclient.transport.session initialized: session-id=3321 | server_capabilities=<dictionary-keyiterator object at 0x104ef1730>
+2018-01-20 10:54:57,052 p=6627 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 10:54:57,098 p=6627 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 10:54:57,098 p=6627 u=kmarquis |  connection established to 192.168.1.151 in 0:00:04.823046
+2018-01-20 10:54:57,098 p=6627 u=kmarquis |  local socket is set to listening
+2018-01-20 10:54:57,289 p=6627 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:54:57,289 p=6627 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 10:54:57,290 p=6627 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:54:57,290 p=6627 u=kmarquis |  socket operation is RUN
+2018-01-20 10:54:57,291 p=6627 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:54:58,975 p=6627 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:54:58,976 p=6627 u=kmarquis |  socket operation is EXEC
+2018-01-20 10:54:58,977 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 10:55:00,159 p=6627 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:55:00,249 p=6551 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:55:00,280 p=6551 u=kmarquis |  TASK [Copy RSI Details to Local File] *********************************************************************************************************************************************
+2018-01-20 10:55:00,329 p=6551 u=kmarquis |  fatal: [192.168.1.151]: FAILED! => {"msg": "The task includes an option with an undefined variable. The error was: 'dict object' has no attribute 'output'\n\nThe error appears to have been in '/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.yaml': line 56, column 6, but may\nbe elsewhere in the file depending on the exact syntax problem.\n\nThe offending line appears to be:\n\n\n   - name: Copy RSI Details to Local File\n     ^ here\n\nexception type: <class 'ansible.errors.AnsibleUndefinedVariable'>\nexception: 'dict object' has no attribute 'output'"}
+2018-01-20 10:55:00,331 p=6551 u=kmarquis |  	to retry, use: --limit @/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.retry
+
+2018-01-20 10:55:00,331 p=6551 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 10:55:00,331 p=6551 u=kmarquis |  192.168.1.151              : ok=5    changed=0    unreachable=0    failed=1   
+2018-01-20 10:55:30,160 p=6627 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 10:55:30,171 p=6627 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:55:30,172 p=6627 u=kmarquis |  closing local listener
+2018-01-20 10:55:30,172 p=6627 u=kmarquis |  closing the connection
+2018-01-20 10:55:30,172 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 10:55:30,325 p=6627 u=kmarquis |  removing the local control socket
+2018-01-20 10:55:30,325 p=6627 u=kmarquis |  shutdown complete
+2018-01-20 10:55:30,325 p=6627 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:55:30,325 p=6627 u=kmarquis |  persistent connection is not active
+2018-01-20 10:55:30,326 p=6627 u=kmarquis |  shutdown local socket, connection was active for 0:00:38.050703 secs
+2018-01-20 10:55:58,417 p=6652 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 10:55:58,514 p=6652 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 10:55:59,575 p=6652 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:55:59,583 p=6652 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 10:55:59,874 p=6652 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:55:59,880 p=6652 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 10:56:00,185 p=6652 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:56:00,192 p=6652 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 10:56:00,198 p=6652 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 10:56:00,700 p=6652 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:56:00,705 p=6652 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 10:56:01,954 p=6728 u=kmarquis |  creating new control socket for host 192.168.1.151:830 as user kmarquis
+2018-01-20 10:56:01,955 p=6728 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/71452d3405
+2018-01-20 10:56:01,955 p=6728 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 10:56:01,956 p=6728 u=kmarquis |  using connection plugin netconf
+2018-01-20 10:56:02,271 p=6728 u=kmarquis |  network_os is set to junos
+2018-01-20 10:56:02,301 p=6728 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 10:56:02,533 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 10:56:02,847 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 10:56:07,124 ncclient.transport.session initialized: session-id=3328 | server_capabilities=<dictionary-keyiterator object at 0x104ef1730>
+2018-01-20 10:56:07,124 p=6728 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 10:56:07,157 p=6728 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 10:56:07,158 p=6728 u=kmarquis |  connection established to 192.168.1.151 in 0:00:05.201967
+2018-01-20 10:56:07,158 p=6728 u=kmarquis |  local socket is set to listening
+2018-01-20 10:56:07,975 p=6728 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:56:07,975 p=6728 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 10:56:07,976 p=6728 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:56:07,976 p=6728 u=kmarquis |  socket operation is RUN
+2018-01-20 10:56:07,977 p=6728 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:56:09,112 p=6728 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 10:56:09,113 p=6728 u=kmarquis |  socket operation is EXEC
+2018-01-20 10:56:09,114 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 10:56:10,500 p=6728 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 10:56:10,573 p=6652 u=kmarquis |  ok: [192.168.1.151]
+2018-01-20 10:56:10,596 p=6652 u=kmarquis |  TASK [Copy RSI Details to Local File] *********************************************************************************************************************************************
+2018-01-20 10:56:11,488 p=6652 u=kmarquis |  changed: [192.168.1.151]
+2018-01-20 10:56:11,491 p=6652 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 10:56:11,491 p=6652 u=kmarquis |  192.168.1.151              : ok=6    changed=1    unreachable=0    failed=0   
+2018-01-20 10:56:40,501 p=6728 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 10:56:40,502 p=6728 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:56:40,502 p=6728 u=kmarquis |  closing local listener
+2018-01-20 10:56:40,502 p=6728 u=kmarquis |  closing the connection
+2018-01-20 10:56:40,503 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 10:56:40,655 p=6728 u=kmarquis |  removing the local control socket
+2018-01-20 10:56:40,655 p=6728 u=kmarquis |  shutdown complete
+2018-01-20 10:56:40,655 p=6728 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 10:56:40,656 p=6728 u=kmarquis |  persistent connection is not active
+2018-01-20 10:56:40,656 p=6728 u=kmarquis |  shutdown local socket, connection was active for 0:00:38.700290 secs
+2018-01-20 11:00:59,027 p=6809 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:00:59,041 p=6809 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:00:59,464 p=6809 u=kmarquis |  ok: [srx]
+2018-01-20 11:00:59,470 p=6809 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:00:59,760 p=6809 u=kmarquis |  ok: [srx]
+2018-01-20 11:00:59,765 p=6809 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:01:00,067 p=6809 u=kmarquis |  ok: [srx]
+2018-01-20 11:01:00,074 p=6809 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:01:00,079 p=6809 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:01:00,607 p=6809 u=kmarquis |  ok: [srx]
+2018-01-20 11:01:00,614 p=6809 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:01:01,668 p=6887 u=kmarquis |  creating new control socket for host srx:830 as user kmarquis
+2018-01-20 11:01:01,669 p=6887 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/af1c6fdba7
+2018-01-20 11:01:01,669 p=6887 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 11:01:01,669 p=6887 u=kmarquis |  using connection plugin netconf
+2018-01-20 11:01:01,725 p=6887 u=kmarquis |  network_os is set to junos
+2018-01-20 11:01:01,741 p=6887 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 11:01:02,086 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 11:01:02,418 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 11:01:06,636 ncclient.transport.session initialized: session-id=3338 | server_capabilities=<dictionary-keyiterator object at 0x104ef0730>
+2018-01-20 11:01:06,636 p=6887 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 11:01:06,640 p=6887 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 11:01:06,640 p=6887 u=kmarquis |  connection established to srx in 0:00:04.970916
+2018-01-20 11:01:06,680 p=6887 u=kmarquis |  local socket is set to listening
+2018-01-20 11:01:06,682 p=6887 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:01:06,682 p=6887 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:01:06,683 p=6887 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:01:06,683 p=6887 u=kmarquis |  socket operation is RUN
+2018-01-20 11:01:06,683 p=6887 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:01:08,252 p=6887 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:01:08,253 p=6887 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:01:08,254 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:01:09,232 p=6887 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:01:09,392 p=6809 u=kmarquis |  ok: [srx]
+2018-01-20 11:01:09,413 p=6809 u=kmarquis |  TASK [Copy RSI Details to Local File] *********************************************************************************************************************************************
+2018-01-20 11:01:10,516 p=6809 u=kmarquis |  changed: [srx]
+2018-01-20 11:01:10,518 p=6809 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:01:10,519 p=6809 u=kmarquis |  srx                        : ok=6    changed=1    unreachable=0    failed=0   
+2018-01-20 11:01:39,233 p=6887 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 11:01:39,233 p=6887 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:01:39,233 p=6887 u=kmarquis |  closing local listener
+2018-01-20 11:01:39,234 p=6887 u=kmarquis |  closing the connection
+2018-01-20 11:01:39,234 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 11:01:39,302 p=6887 u=kmarquis |  removing the local control socket
+2018-01-20 11:01:39,302 p=6887 u=kmarquis |  shutdown complete
+2018-01-20 11:01:39,302 p=6887 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:01:39,303 p=6887 u=kmarquis |  persistent connection is not active
+2018-01-20 11:01:39,303 p=6887 u=kmarquis |  shutdown local socket, connection was active for 0:00:37.633791 secs
+2018-01-20 11:03:00,777 p=6942 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:03:00,788 p=6942 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:03:01,167 p=6942 u=kmarquis |  ok: [srx]
+2018-01-20 11:03:01,172 p=6942 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:03:01,410 p=6942 u=kmarquis |  ok: [srx]
+2018-01-20 11:03:01,415 p=6942 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:03:01,676 p=6942 u=kmarquis |  ok: [srx]
+2018-01-20 11:03:01,683 p=6942 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:03:01,688 p=6942 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:03:02,075 p=6942 u=kmarquis |  ok: [srx]
+2018-01-20 11:03:02,080 p=6942 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:03:03,060 p=7018 u=kmarquis |  creating new control socket for host srx:830 as user kmarquis
+2018-01-20 11:03:03,061 p=7018 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/af1c6fdba7
+2018-01-20 11:03:03,061 p=7018 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 11:03:03,061 p=7018 u=kmarquis |  using connection plugin netconf
+2018-01-20 11:03:03,165 p=7018 u=kmarquis |  network_os is set to junos
+2018-01-20 11:03:03,182 p=7018 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 11:03:03,395 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 11:03:03,726 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 11:03:07,880 ncclient.transport.session initialized: session-id=3348 | server_capabilities=<dictionary-keyiterator object at 0x104f7d730>
+2018-01-20 11:03:07,880 p=7018 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 11:03:07,882 p=7018 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 11:03:07,883 p=7018 u=kmarquis |  connection established to srx in 0:00:04.821760
+2018-01-20 11:03:07,883 p=7018 u=kmarquis |  local socket is set to listening
+2018-01-20 11:03:08,076 p=7018 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:03:08,076 p=7018 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:03:08,077 p=7018 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:03:08,077 p=7018 u=kmarquis |  socket operation is RUN
+2018-01-20 11:03:08,077 p=7018 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:03:09,114 p=7018 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:03:09,114 p=7018 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:03:09,115 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:03:10,245 p=7018 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:03:10,274 p=6942 u=kmarquis |  ok: [srx]
+2018-01-20 11:03:10,310 p=6942 u=kmarquis |  TASK [debug] **********************************************************************************************************************************************************************
+2018-01-20 11:03:10,373 p=6942 u=kmarquis |  ok: [srx] => {
+    "rsi_details.output": "VARIABLE IS NOT DEFINED!"
+}
+2018-01-20 11:03:10,375 p=6942 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:03:10,376 p=6942 u=kmarquis |  srx                        : ok=6    changed=0    unreachable=0    failed=0   
+2018-01-20 11:03:40,245 p=7018 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 11:03:40,245 p=7018 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:03:40,245 p=7018 u=kmarquis |  closing local listener
+2018-01-20 11:03:40,246 p=7018 u=kmarquis |  closing the connection
+2018-01-20 11:03:40,246 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 11:03:40,365 p=7018 u=kmarquis |  removing the local control socket
+2018-01-20 11:03:40,366 p=7018 u=kmarquis |  shutdown complete
+2018-01-20 11:03:40,366 p=7018 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:03:40,366 p=7018 u=kmarquis |  persistent connection is not active
+2018-01-20 11:03:40,367 p=7018 u=kmarquis |  shutdown local socket, connection was active for 0:00:37.305653 secs
+2018-01-20 11:04:11,791 p=7042 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:04:11,805 p=7042 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:04:12,195 p=7042 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:12,200 p=7042 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:04:12,449 p=7042 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:12,454 p=7042 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:04:12,715 p=7042 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:12,722 p=7042 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:04:12,727 p=7042 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:04:13,116 p=7042 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:13,121 p=7042 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:04:14,091 p=7118 u=kmarquis |  creating new control socket for host srx:830 as user kmarquis
+2018-01-20 11:04:14,091 p=7118 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/af1c6fdba7
+2018-01-20 11:04:14,092 p=7118 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 11:04:14,092 p=7118 u=kmarquis |  using connection plugin netconf
+2018-01-20 11:04:14,170 p=7118 u=kmarquis |  network_os is set to junos
+2018-01-20 11:04:14,186 p=7118 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 11:04:14,394 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 11:04:14,706 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 11:04:18,878 ncclient.transport.session initialized: session-id=3355 | server_capabilities=<dictionary-keyiterator object at 0x104ef0730>
+2018-01-20 11:04:18,878 p=7118 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 11:04:18,881 p=7118 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 11:04:18,881 p=7118 u=kmarquis |  connection established to srx in 0:00:04.789328
+2018-01-20 11:04:18,882 p=7118 u=kmarquis |  local socket is set to listening
+2018-01-20 11:04:19,110 p=7118 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:04:19,111 p=7118 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:04:19,111 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:19,112 p=7118 u=kmarquis |  socket operation is RUN
+2018-01-20 11:04:19,112 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:20,156 p=7118 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:04:20,156 p=7118 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:04:20,158 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:04:20,276 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:20,307 p=7042 u=kmarquis |  fatal: [srx]: FAILED! => {"changed": false, "msg": "jxmlease is required but does not appear to be installed. It can be installed using `pip install jxmlease`"}
+2018-01-20 11:04:20,309 p=7042 u=kmarquis |  	to retry, use: --limit @/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.retry
+
+2018-01-20 11:04:20,309 p=7042 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:04:20,310 p=7042 u=kmarquis |  srx                        : ok=4    changed=0    unreachable=0    failed=1   
+2018-01-20 11:04:44,234 p=7144 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:04:44,250 p=7144 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:04:44,620 p=7144 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:44,625 p=7144 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:04:44,901 p=7144 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:44,906 p=7144 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:04:45,173 p=7144 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:45,179 p=7144 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:04:45,185 p=7144 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:04:45,564 p=7144 u=kmarquis |  ok: [srx]
+2018-01-20 11:04:45,569 p=7144 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:04:46,533 p=7220 u=kmarquis |  re-using existing socket for kmarquis@srx:830
+2018-01-20 11:04:46,533 p=7118 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:04:46,534 p=7118 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:04:46,534 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:46,534 p=7118 u=kmarquis |  socket operation is RUN
+2018-01-20 11:04:46,534 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:47,567 p=7118 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:04:47,567 p=7118 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:04:47,567 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:04:47,735 p=7118 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:04:47,765 p=7144 u=kmarquis |  fatal: [srx]: FAILED! => {"changed": false, "msg": "jxmlease is required but does not appear to be installed. It can be installed using `pip install jxmlease`"}
+2018-01-20 11:04:47,767 p=7144 u=kmarquis |  	to retry, use: --limit @/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.retry
+
+2018-01-20 11:04:47,767 p=7144 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:04:47,767 p=7144 u=kmarquis |  srx                        : ok=4    changed=0    unreachable=0    failed=1   
+2018-01-20 11:05:17,736 p=7118 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 11:05:17,736 p=7118 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:05:17,737 p=7118 u=kmarquis |  closing local listener
+2018-01-20 11:05:17,737 p=7118 u=kmarquis |  closing the connection
+2018-01-20 11:05:17,737 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 11:05:17,805 p=7118 u=kmarquis |  removing the local control socket
+2018-01-20 11:05:17,807 p=7118 u=kmarquis |  shutdown complete
+2018-01-20 11:05:17,807 p=7118 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:05:17,807 p=7118 u=kmarquis |  persistent connection is not active
+2018-01-20 11:05:17,807 p=7118 u=kmarquis |  shutdown local socket, connection was active for 0:01:03.715572 secs
+2018-01-20 11:06:51,840 p=7246 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:06:51,854 p=7246 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:06:52,238 p=7246 u=kmarquis |  ok: [srx]
+2018-01-20 11:06:52,243 p=7246 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:06:52,486 p=7246 u=kmarquis |  ok: [srx]
+2018-01-20 11:06:52,491 p=7246 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:06:52,747 p=7246 u=kmarquis |  ok: [srx]
+2018-01-20 11:06:52,753 p=7246 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:06:52,759 p=7246 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:06:53,145 p=7246 u=kmarquis |  ok: [srx]
+2018-01-20 11:06:53,149 p=7246 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:06:54,119 p=7322 u=kmarquis |  creating new control socket for host srx:830 as user kmarquis
+2018-01-20 11:06:54,119 p=7322 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/af1c6fdba7
+2018-01-20 11:06:54,120 p=7322 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 11:06:54,121 p=7322 u=kmarquis |  using connection plugin netconf
+2018-01-20 11:06:54,197 p=7322 u=kmarquis |  network_os is set to junos
+2018-01-20 11:06:54,213 p=7322 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 11:06:54,448 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 11:06:54,750 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 11:06:58,955 ncclient.transport.session initialized: session-id=3365 | server_capabilities=<dictionary-keyiterator object at 0x1050a7730>
+2018-01-20 11:06:58,955 p=7322 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 11:06:58,958 p=7322 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 11:06:58,958 p=7322 u=kmarquis |  connection established to srx in 0:00:04.837720
+2018-01-20 11:06:58,958 p=7322 u=kmarquis |  local socket is set to listening
+2018-01-20 11:06:59,134 p=7322 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:06:59,134 p=7322 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:06:59,135 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:06:59,135 p=7322 u=kmarquis |  socket operation is RUN
+2018-01-20 11:06:59,135 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:07:00,168 p=7322 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:07:00,169 p=7322 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:07:00,169 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:07:00,388 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:07:00,421 p=7246 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:00,427 p=7246 u=kmarquis |  TASK [debug] **********************************************************************************************************************************************************************
+2018-01-20 11:07:00,456 p=7246 u=kmarquis |  ok: [srx] => {
+    "rsi_details.stdout": [
+        "## Last changed: 2018-01-20 00:29:40 UTC\nversion 12.1X46-D67;\nsystem {\n    root-authentication {\n        encrypted-password \"$1$2l9UPwLN$3rozbY2lNffyW54ICsbha/\";\n    }\n    login {\n        user ansible {\n            uid 2005;\n            class super-user;\n            authentication {\n                encrypted-password \"$1$qXXmkZxo$mxdeNJ6VDe.1jpqLsV6hV.\";\n            }\n        }\n        user kmarquis {\n            uid 2000;\n            class super-user;\n            authentication {\n                encrypted-password \"$1$ztKTvRhq$BzmVw6vlPfAwMrl1cloNF0\";\n                ssh-rsa \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDWH5+vyXWbPd1ti9lHSVY5w/zFkO/5mmAyXuT88PRLOnHzvS7IN7Na4xE8e73kYB4y4XBNrqqYcn1WlWkiaIFqjPE/EN+hYYg/QRp4I1fOYsH0i6aWoqKNULaWy0vp3oBZ11Uli3XPw6OTHObgW86frdl0UQ+0jjSCAcUfZvpPNYl4HIdfaoZEUpLzUm045mqNHDbGmpg+F6S6KDfPO5HoIXeIvWraSHRuU0NbHMS85efLnsEgLZmrbfbQQhuLYZjAHVfzN4cdYxAXQjqPvLkaqO/Vyatgq6wNI5wIeqF5I7X6bHCzrrc+g63g7MyMpAtJR7uM+plDvWGkDxoinHROjSCD86nPum9YrXWL0i/r9/XGgco7pe1Ig19eQPxqL2CLuVizU4vxJFTOkAobk8vhfdCiFRlHwaET5q34Iywj6JJOn8sKrv2MvFT0WdhTXSOnapQtRGvELy5/odb7999c20canB/yGgP9qJVGE51qK07WInhp25CUaFdOutv2wAYaChPWPmjxPpCdN0gKunzHgIrfOGMZUakvQ5xu5FpDjPFu9totbDb3a5ezWI4WKRjGO63JhH5O5+sbKFUHOU97kzj1fRGT8HKrJAA4OovpLFyZgLxK62x6/nT1Y/yiGQ0SOah1nFQDqqY7ZIFdeYNYWQ8E86hgmwDB8d3HnW/Q4Q== k.marquis@kd-tech.co.uk\";\n            }\n        }\n    }\n    services {\n        ssh {\n            protocol-version v2;\n        }\n        netconf {\n            ssh;\n        }\n    }\n}\ninterfaces {\n    fe-0/0/0 {\n        unit 0 {\n            family inet {\n                address 192.168.1.151/24;\n            }\n        }\n    }\n}\nrouting-options {\n    static {\n        route 0.0.0.0/0 next-hop 192.168.1.254;\n    }\n}\nsecurity {\n    forwarding-options {\n        family {\n            inet6 {\n                mode packet-based;\n            }\n            mpls {\n                mode packet-based;\n            }\n            iso {\n                mode packet-based;\n            }\n        }\n    }\n}"
+    ]
+}
+2018-01-20 11:07:00,458 p=7246 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:07:00,458 p=7246 u=kmarquis |  srx                        : ok=6    changed=0    unreachable=0    failed=0   
+2018-01-20 11:07:19,922 p=7346 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:07:19,935 p=7346 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:07:20,309 p=7346 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:20,314 p=7346 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:07:20,563 p=7346 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:20,568 p=7346 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:07:20,860 p=7346 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:20,866 p=7346 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:07:20,873 p=7346 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:07:21,266 p=7346 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:21,272 p=7346 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:07:22,248 p=7422 u=kmarquis |  re-using existing socket for kmarquis@srx:830
+2018-01-20 11:07:22,248 p=7322 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:07:22,249 p=7322 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:07:22,249 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:07:22,249 p=7322 u=kmarquis |  socket operation is RUN
+2018-01-20 11:07:22,249 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:07:23,341 p=7322 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:07:23,341 p=7322 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:07:23,342 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:07:23,461 p=7322 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:07:23,495 p=7346 u=kmarquis |  ok: [srx]
+2018-01-20 11:07:23,500 p=7346 u=kmarquis |  TASK [debug] **********************************************************************************************************************************************************************
+2018-01-20 11:07:23,533 p=7346 u=kmarquis |  ok: [srx] => {
+    "rsi_details.stdout_lines": [
+        [
+            "## Last changed: 2018-01-20 00:29:40 UTC", 
+            "version 12.1X46-D67;", 
+            "system {", 
+            "    root-authentication {", 
+            "        encrypted-password \"$1$2l9UPwLN$3rozbY2lNffyW54ICsbha/\";", 
+            "    }", 
+            "    login {", 
+            "        user ansible {", 
+            "            uid 2005;", 
+            "            class super-user;", 
+            "            authentication {", 
+            "                encrypted-password \"$1$qXXmkZxo$mxdeNJ6VDe.1jpqLsV6hV.\";", 
+            "            }", 
+            "        }", 
+            "        user kmarquis {", 
+            "            uid 2000;", 
+            "            class super-user;", 
+            "            authentication {", 
+            "                encrypted-password \"$1$ztKTvRhq$BzmVw6vlPfAwMrl1cloNF0\";", 
+            "                ssh-rsa \"ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDWH5+vyXWbPd1ti9lHSVY5w/zFkO/5mmAyXuT88PRLOnHzvS7IN7Na4xE8e73kYB4y4XBNrqqYcn1WlWkiaIFqjPE/EN+hYYg/QRp4I1fOYsH0i6aWoqKNULaWy0vp3oBZ11Uli3XPw6OTHObgW86frdl0UQ+0jjSCAcUfZvpPNYl4HIdfaoZEUpLzUm045mqNHDbGmpg+F6S6KDfPO5HoIXeIvWraSHRuU0NbHMS85efLnsEgLZmrbfbQQhuLYZjAHVfzN4cdYxAXQjqPvLkaqO/Vyatgq6wNI5wIeqF5I7X6bHCzrrc+g63g7MyMpAtJR7uM+plDvWGkDxoinHROjSCD86nPum9YrXWL0i/r9/XGgco7pe1Ig19eQPxqL2CLuVizU4vxJFTOkAobk8vhfdCiFRlHwaET5q34Iywj6JJOn8sKrv2MvFT0WdhTXSOnapQtRGvELy5/odb7999c20canB/yGgP9qJVGE51qK07WInhp25CUaFdOutv2wAYaChPWPmjxPpCdN0gKunzHgIrfOGMZUakvQ5xu5FpDjPFu9totbDb3a5ezWI4WKRjGO63JhH5O5+sbKFUHOU97kzj1fRGT8HKrJAA4OovpLFyZgLxK62x6/nT1Y/yiGQ0SOah1nFQDqqY7ZIFdeYNYWQ8E86hgmwDB8d3HnW/Q4Q== k.marquis@kd-tech.co.uk\";", 
+            "            }", 
+            "        }", 
+            "    }", 
+            "    services {", 
+            "        ssh {", 
+            "            protocol-version v2;", 
+            "        }", 
+            "        netconf {", 
+            "            ssh;", 
+            "        }", 
+            "    }", 
+            "}", 
+            "interfaces {", 
+            "    fe-0/0/0 {", 
+            "        unit 0 {", 
+            "            family inet {", 
+            "                address 192.168.1.151/24;", 
+            "            }", 
+            "        }", 
+            "    }", 
+            "}", 
+            "routing-options {", 
+            "    static {", 
+            "        route 0.0.0.0/0 next-hop 192.168.1.254;", 
+            "    }", 
+            "}", 
+            "security {", 
+            "    forwarding-options {", 
+            "        family {", 
+            "            inet6 {", 
+            "                mode packet-based;", 
+            "            }", 
+            "            mpls {", 
+            "                mode packet-based;", 
+            "            }", 
+            "            iso {", 
+            "                mode packet-based;", 
+            "            }", 
+            "        }", 
+            "    }", 
+            "}"
+        ]
+    ]
+}
+2018-01-20 11:07:23,535 p=7346 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:07:23,535 p=7346 u=kmarquis |  srx                        : ok=6    changed=0    unreachable=0    failed=0   
+2018-01-20 11:07:53,462 p=7322 u=kmarquis |  persistent connection idle timeout triggered, timeout value is 30 secs
+2018-01-20 11:07:53,462 p=7322 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:07:53,462 p=7322 u=kmarquis |  closing local listener
+2018-01-20 11:07:53,463 p=7322 u=kmarquis |  closing the connection
+2018-01-20 11:07:53,463 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 11:07:53,532 p=7322 u=kmarquis |  removing the local control socket
+2018-01-20 11:07:53,532 p=7322 u=kmarquis |  shutdown complete
+2018-01-20 11:07:53,533 p=7322 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:07:53,533 p=7322 u=kmarquis |  persistent connection is not active
+2018-01-20 11:07:53,533 p=7322 u=kmarquis |  shutdown local socket, connection was active for 0:00:59.412974 secs
+2018-01-20 11:08:26,749 p=7446 u=kmarquis |  PLAY [Creating Directories for Device(s)] *****************************************************************************************************************************************
+2018-01-20 11:08:26,762 p=7446 u=kmarquis |  TASK [delete previous build directory] ********************************************************************************************************************************************
+2018-01-20 11:08:27,144 p=7446 u=kmarquis |  ok: [srx]
+2018-01-20 11:08:27,149 p=7446 u=kmarquis |  TASK [create host build directory] ************************************************************************************************************************************************
+2018-01-20 11:08:27,400 p=7446 u=kmarquis |  ok: [srx]
+2018-01-20 11:08:27,405 p=7446 u=kmarquis |  TASK [create output file to save rsi output] **************************************************************************************************************************************
+2018-01-20 11:08:27,667 p=7446 u=kmarquis |  ok: [srx]
+2018-01-20 11:08:27,673 p=7446 u=kmarquis |  PLAY [Collect JTAC Basic Details] *************************************************************************************************************************************************
+2018-01-20 11:08:27,678 p=7446 u=kmarquis |  TASK [Checking NETCONF connectivity] **********************************************************************************************************************************************
+2018-01-20 11:08:28,071 p=7446 u=kmarquis |  ok: [srx]
+2018-01-20 11:08:28,076 p=7446 u=kmarquis |  TASK [Run RSI command] ************************************************************************************************************************************************************
+2018-01-20 11:08:29,039 p=7522 u=kmarquis |  creating new control socket for host srx:830 as user kmarquis
+2018-01-20 11:08:29,040 p=7522 u=kmarquis |  control socket path is /Users/kmarquis/.ansible/pc/af1c6fdba7
+2018-01-20 11:08:29,040 p=7522 u=kmarquis |  current working directory is /Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI
+2018-01-20 11:08:29,041 p=7522 u=kmarquis |  using connection plugin netconf
+2018-01-20 11:08:29,114 p=7522 u=kmarquis |  network_os is set to junos
+2018-01-20 11:08:29,132 p=7522 u=kmarquis |  ssh connection done, stating ncclient
+2018-01-20 11:08:29,341 ncclient.transport.ssh Connected (version 2.0, client OpenSSH_6.6)
+2018-01-20 11:08:29,672 ncclient.transport.ssh Authentication (publickey) successful!
+2018-01-20 11:08:33,924 ncclient.transport.session initialized: session-id=3372 | server_capabilities=<dictionary-keyiterator object at 0x104ef0730>
+2018-01-20 11:08:33,925 p=7522 u=kmarquis |  ncclient manager object created successfully
+2018-01-20 11:08:33,928 p=7522 u=kmarquis |  loaded netconf plugin for network_os junos
+2018-01-20 11:08:33,928 p=7522 u=kmarquis |  connection established to srx in 0:00:04.887109
+2018-01-20 11:08:33,928 p=7522 u=kmarquis |  local socket is set to listening
+2018-01-20 11:08:34,056 p=7522 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:08:34,056 p=7522 u=kmarquis |  socket operation is CONTEXT
+2018-01-20 11:08:34,057 p=7522 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:08:34,057 p=7522 u=kmarquis |  socket operation is RUN
+2018-01-20 11:08:34,057 p=7522 u=kmarquis |  socket operation completed with rc 0
+2018-01-20 11:08:35,757 p=7522 u=kmarquis |  incoming request accepted on persistent socket
+2018-01-20 11:08:35,757 p=7522 u=kmarquis |  socket operation is EXEC
+2018-01-20 11:08:35,758 ncclient.operations.rpc Requesting 'ExecuteRpc'
+2018-01-20 11:08:45,757 p=7522 u=kmarquis |  command timeout triggered, timeout value is 10 secs
+2018-01-20 11:08:45,758 p=7522 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:08:45,758 p=7522 u=kmarquis |  closing local listener
+2018-01-20 11:08:45,758 p=7522 u=kmarquis |  closing the connection
+2018-01-20 11:08:45,758 ncclient.operations.rpc Requesting 'CloseSession'
+2018-01-20 11:08:55,776 p=7522 u=kmarquis |  removing the local control socket
+2018-01-20 11:08:55,810 p=7522 u=kmarquis |  shutdown complete
+2018-01-20 11:08:55,810 p=7522 u=kmarquis |  shutdown persistent connection requested
+2018-01-20 11:08:55,810 p=7522 u=kmarquis |  persistent connection is not active
+2018-01-20 11:08:55,810 p=7522 u=kmarquis |  shutdown local socket, connection was active for 0:00:26.769667 secs
+Traceback (most recent call last):
+  File "/Library/Frameworks/Python.framework/Versions/2.7/bin/ansible-connection", line 388, in <module>
+    main()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/bin/ansible-connection", line 327, in main
+    server.run()
+  File "/Library/Frameworks/Python.framework/Versions/2.7/bin/ansible-connection", line 169, in run
+    if e.errno != errno.EINTR:
+AttributeError: 'SessionCloseError' object has no attribute 'errno'
+2018-01-20 11:08:55,996 p=7446 u=kmarquis |  An exception occurred during task execution. To see the full traceback, use -vvv. The error was: TypeError: int() can't convert non-string with explicit base
+2018-01-20 11:08:55,997 p=7446 u=kmarquis |  fatal: [srx]: FAILED! => {"changed": false, "module_stderr": "Traceback (most recent call last):\n  File \"/var/folders/ff/rwc4wnt10qdgftdck0_z96yr0000gn/T/ansible_zQXMlu/ansible_module_junos_command.py\", line 446, in <module>\n    main()\n  File \"/var/folders/ff/rwc4wnt10qdgftdck0_z96yr0000gn/T/ansible_zQXMlu/ansible_module_junos_command.py\", line 394, in main\n    responses = rpc(module, items)\n  File \"/var/folders/ff/rwc4wnt10qdgftdck0_z96yr0000gn/T/ansible_zQXMlu/ansible_module_junos_command.py\", line 244, in rpc\n    reply = send_request(module, element, ignore_warning=False)\n  File \"/var/folders/ff/rwc4wnt10qdgftdck0_z96yr0000gn/T/ansible_zQXMlu/ansible_modlib.zip/ansible/module_utils/netconf.py\", line 42, in send_request\n  File \"/var/folders/ff/rwc4wnt10qdgftdck0_z96yr0000gn/T/ansible_zQXMlu/ansible_modlib.zip/ansible/module_utils/connection.py\", line 71, in exec_command\nTypeError: int() can't convert non-string with explicit base\n", "module_stdout": "", "msg": "MODULE FAILURE", "rc": 0}
+2018-01-20 11:08:55,999 p=7446 u=kmarquis |  	to retry, use: --limit @/Users/kmarquis/Desktop/projects/playbooks/Juniper/JTAC_RSI/jtac_rsi_playbook.retry
+
+2018-01-20 11:08:56,000 p=7446 u=kmarquis |  PLAY RECAP ************************************************************************************************************************************************************************
+2018-01-20 11:08:56,000 p=7446 u=kmarquis |  srx                        : ok=4    changed=0    unreachable=0    failed=1   

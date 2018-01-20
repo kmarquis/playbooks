@@ -1,6 +1,6 @@
 ---
 cli:
   host: "{{ inventory_hostname }}"
-  username: ansible
-  ssh_keyfile: /home/ansible/.ssh/id_rsa.pub
+  username: kmarquis
+  ssh_keyfile: /Users/kmarquis/.ssh/id_rsa.pub
   transport: cli

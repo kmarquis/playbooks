@@ -1,0 +1,62 @@
+---
+# =========================================================
+# Setup variables and directories
+# =========================================================
+
+- name: Creating Directories for Device(s)
+  hosts: all
+  connection: local
+  gather_facts: no
+  tasks:
+    - name: delete previous build directory
+      file:
+        state: absent
+        path: "{{ rsi_device_dir }}"
+      changed_when: no
+      check_mode: no
+    - name: create host build directory
+      file:
+        path: "{{ rsi_device_dir }}"
+        state: directory
+        recurse: yes
+        mode: 0755
+      changed_when: no
+      check_mode: no
+    - name: create output file to save rsi output
+      file:
+        path: "{{ rsi_output }}"
+        state: touch
+        mode: 0755
+      changed_when: no
+      check_mode: no
+
+# =========================================================
+# Collect RSI Details
+# =========================================================
+- name: Collect JTAC Basic Details
+  hosts: junos
+  connection: local
+  gather_facts: no
+
+  tasks:
+   - name: Checking NETCONF connectivity
+     wait_for: 
+      host: "{{ inventory_hostname }}"
+      port: 830 
+      timeout: 5
+   
+   - name: Run RSI command
+     junos_command:
+       commands: request support information | no more
+       provider: "{{ netconf }}"
+       display: text
+     register: rsi_details
+   # - debug: var=rsi_details.stdout_lines
+
+   - name: Copy RSI Details to Local File
+     copy:
+       content: "{{ rsi_details.stdout_lines }}"
+       dest: "{{ rsi_output }}"
+
+   # - name: Run Python Script to Extract Down BGP Sessions
+   #   script: bgpScript.py

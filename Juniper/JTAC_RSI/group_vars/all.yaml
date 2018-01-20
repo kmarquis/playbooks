@@ -1,0 +1,14 @@
+---
+rsi_dir: "{{ playbook_dir }}/rsi"
+rsi_device_dir: "{{ rsi_dir }}/{{ inventory_hostname }}"
+rsi_output: "{{ rsi_dir }}/{{ inventory_hostname }}/RSI-{{ inventory_hostname }}-{{ lookup('pipe', 'date +%d%m%Y') }}.txt"
+cli:
+  host: "{{ inventory_hostname }}"
+  username: kmarquis
+  ssh_keyfile: /Users/kmarquis/.ssh/id_rsa.pub
+  transport: cli
+netconf:
+  host: "{{ inventory_hostname }}"
+  username: kmarquis
+  password: /Users/kmarquis/.ssh/id_rsa.pub
+  transport: netconf
